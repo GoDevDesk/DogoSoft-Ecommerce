@@ -1,0 +1,28 @@
+<div class="product-card">
+  <div class="product-image">
+    <img [src]="product.imageUrl" [alt]="product.name" *ngIf="product.imageUrl">
+    <div class="placeholder-image" *ngIf="!product.imageUrl">
+      <div class="logo-placeholder">
+        <span class="logo-text">DogoSoft</span>
+        <span class="logo-icon">💻</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-info">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-description">{{ product.description }}</p>
+    
+    <div class="product-details">
+      <span class="product-version">v{{ product.version }}</span>
+      <span class="product-size">{{ product.size }}</span>
+    </div>
+    
+    <div class="product-footer">
+      <span class="product-price">${{ product.price }}</span>
+      <button class="btn btn-primary" (click)="onAddToCart()">
+        Agregar al Carrito
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="auth-container">
+  <div class="card">
+    <div class="card-header">
+      <h3>{{ isLoginMode ? 'Iniciar Sesión' : 'Crear Cuenta' }}</h3>
+    </div>
+    
+    <form (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="email" 
+          name="email"
+          required
+          [disabled]="isLoading">
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+          type="password" 
+          id="password" 
+          [(ngModel)]="password" 
+          name="password"
+          required
+          [disabled]="isLoading">
+      </div>
+      
+      <div class="form-group" *ngIf="!isLoginMode">
+        <label for="confirmPassword">Confirmar Contraseña</label>
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          [(ngModel)]="confirmPassword" 
+          name="confirmPassword"
+          required
+          [disabled]="isLoading">
+      </div>
+      
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      
+      <button 
+        type="submit" 
+        class="btn btn-primary"
+        [disabled]="isLoading">
+        {{ isLoading ? 'Procesando...' : (isLoginMode ? 'Iniciar Sesión' : 'Crear Cuenta') }}
+      </button>
+      
+      <div class="auth-toggle">
+        <p>
+          {{ isLoginMode ? '¿No tienes cuenta?' : '¿Ya tienes cuenta?' }}
+          <button 
+            type="button" 
+            class="btn btn-outline"
+            (click)="toggleMode()"
+            [disabled]="isLoading">
+            {{ isLoginMode ? 'Crear Cuenta' : 'Iniciar Sesión' }}
+          </button>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

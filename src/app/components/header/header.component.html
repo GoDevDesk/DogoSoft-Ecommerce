@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="container">
+    <a routerLink="/" class="logo">
+      <img *ngIf="logoUrl" [src]="logoUrl" alt="DogoSoft" class="logo-image">
+      <span *ngIf="!logoUrl" class="logo-fallback">💻</span>
+      DogoSoft
+    </a>
+    
+    <nav class="nav">
+      <a routerLink="/products" routerLinkActive="active">Productos</a>
+      <a routerLink="/faq" routerLinkActive="active">Preguntas Frecuentes</a>
+      <a routerLink="/contact" routerLinkActive="active">Contacto</a>
+      
+      <div class="cart-icon" routerLink="/cart">
+        <div class="cart-info">
+          <span class="cart-icon-symbol">🛒</span>
+          <div class="cart-details">
+            <span class="cart-count">{{ cartItemCount }} productos</span>
+            <span class="cart-total">${{ cartTotal | number:'1.2-2' }}</span>
+          </div>
+        </div>
+        <span class="badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+      </div>
+      
+      <div *ngIf="user$ | async as user; else authButtons" class="user-menu">
+        <span>Hola, {{ user.email }}</span>
+        <button class="btn btn-outline" (click)="signOut()">Cerrar Sesión</button>
+      </div>
+      
+      <ng-template #authButtons>
+        <a routerLink="/auth" class="btn btn-outline">Iniciar Sesión</a>
+      </ng-template>
+    </nav>
+  </div>
+</header>
