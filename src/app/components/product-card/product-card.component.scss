@@ -1,21 +1,22 @@
 .product-card {
   background-color: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px var(--shadow);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 
   &:hover {
-    box-shadow: 0 4px 16px var(--shadow);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.16);
     transform: translateY(-4px);
   }
 
   .product-image {
-    height: 200px;
-    background-color: var(--secondary-color);
+    height: 210px;
+    background: linear-gradient(160deg, #f8fafc, #e2e8f0);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,7 +27,7 @@
       height: 100%;
       object-fit: contain;
       background-color: var(--white);
-      padding: 20px;
+      padding: 24px;
     }
 
     .placeholder-image {
@@ -57,22 +58,22 @@
   }
 
   .product-info {
-    padding: 20px;
+    padding: 22px;
     flex: 1;
     display: flex;
     flex-direction: column;
 
     .product-name {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--dark-gray);
-      margin-bottom: 8px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
     }
 
     .product-description {
-      color: var(--gray);
+      color: #475569;
       font-size: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       flex: 1;
     }
 
@@ -83,12 +84,12 @@
 
       .product-version,
       .product-size {
-        background-color: var(--secondary-color);
-        color: var(--primary-dark);
-        padding: 4px 8px;
-        border-radius: 4px;
+        background-color: #eff6ff;
+        color: #1e40af;
+        padding: 5px 10px;
+        border-radius: 999px;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: 600;
       }
     }
 
@@ -99,9 +100,14 @@
       margin-top: auto;
 
       .product-price {
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: bold;
-        color: var(--primary-color);
+        color: #1d4ed8;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        border-radius: 12px;
       }
     }
   }
