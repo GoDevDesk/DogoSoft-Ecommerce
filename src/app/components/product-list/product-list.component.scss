@@ -4,6 +4,45 @@
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 45%),
     radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 40%);
 
+  .novedades {
+    margin-bottom: 36px;
+    padding: 28px 28px 32px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 45%);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+  }
+
+  .novedades-title {
+    margin: 0 0 6px;
+    font-size: clamp(1.5rem, 2.2vw, 1.85rem);
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .novedades-lead {
+    margin: 0 0 20px;
+    color: #64748b;
+    font-size: 1rem;
+    max-width: 48ch;
+  }
+
+  .novedades-figure {
+    margin: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #e2e8f0;
+    line-height: 0;
+  }
+
+  .novedades-image {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+  }
+
   .hero-panel {
     background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 70%, #0ea5e9 100%);
     border-radius: 24px;
