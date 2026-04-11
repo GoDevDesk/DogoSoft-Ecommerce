@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
       title: 'FastFood POS para comercios gastronómicos',
       date: 'Abril 2026',
       description: 'Sistema integral para pedidos, cocina, caja e inventario pensado para negocios de comida rápida.',
-      image: 'assets/novedad-emprendimiento.jpg',
+      image: 'assets/novedad.jpg',
       highlights: [
         'Gestión centralizada de pedidos, cocina, caja e inventario.',
         'Módulos para delivery, tesorería e impresión en una sola plataforma.',

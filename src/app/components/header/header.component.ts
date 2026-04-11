@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   user$: Observable<User | null>;
   cartItemCount = 0;
   cartTotal = 0;
-  logoUrl = 'assets/logo.png';
 
   constructor(
     private authService: AuthService,
