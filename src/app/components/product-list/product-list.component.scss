@@ -4,6 +4,31 @@
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 45%),
     radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 40%);
 
+  .updates-section {
+    background-color: #ffffff;
+    border-radius: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 30px;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    margin-bottom: 30px;
+
+    .update-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: linear-gradient(140deg, #f8fafc, #eef2ff);
+      border: 1px solid rgba(99, 102, 241, 0.12);
+    }
+
+    .update-media {
+      img {
+        width: 100%;
+        display: block;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(30, 41, 59, 0.15);
+      }
+    }
+  }
+
   .hero-panel {
     background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 70%, #0ea5e9 100%);
     border-radius: 24px;
@@ -11,9 +36,10 @@
     margin-bottom: 34px;
     color: var(--white);
     display: grid;
-    grid-template-columns: 1.7fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 24px;
     box-shadow: 0 20px 35px rgba(15, 23, 42, 0.25);
+    align-items: center;
 
     .hero-copy {
       .eyebrow {
@@ -41,28 +67,20 @@
       }
     }
 
-    .hero-stats {
-      display: grid;
-      gap: 12px;
+    .hero-logo {
+      justify-self: center;
+      width: min(300px, 100%);
+      border-radius: 26px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 14px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
 
-      .stat-card {
-        background-color: rgba(15, 23, 42, 0.35);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+      img {
+        width: 100%;
         border-radius: 16px;
-        padding: 16px;
-        backdrop-filter: blur(6px);
-
-        .label {
-          display: block;
-          font-size: 13px;
-          color: rgba(224, 231, 255, 0.9);
-          margin-bottom: 4px;
-        }
-
-        .value {
-          font-size: 1.4rem;
-          font-weight: 700;
-        }
+        display: block;
       }
     }
   }
@@ -97,7 +115,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
-    margin-bottom: 40px;
   }
 
   .empty-state {
@@ -123,6 +140,13 @@
       padding: 24px;
       gap: 20px;
       border-radius: 20px;
+    }
+
+    .updates-section {
+      padding: 20px;
+      .update-card {
+        padding: 14px;
+      }
     }
 
     .section-header {

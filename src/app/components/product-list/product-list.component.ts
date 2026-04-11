@@ -12,14 +12,12 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   isLoading = true;
+  newsImage = '/assets/novedad.jpg';
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    console.log('ProductListComponent inicializado');
-    // Suscribirse a los productos
     this.productService.getProducts().subscribe(products => {
-      console.log('Productos recibidos:', products.length);
       this.products = products;
       this.isLoading = false;
     });
@@ -27,5 +25,11 @@ export class ProductListComponent implements OnInit {
 
   onAddToCart(product: Product) {
     this.productService.addToCart(product);
+  }
+
+  onNewsImageError(event: Event) {
+    const image = event.target as HTMLImageElement;
+    image.src = '/assets/logo.png';
+    image.alt = 'Novedad DogoSoft';
   }
 }

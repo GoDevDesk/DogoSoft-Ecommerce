@@ -2,10 +2,7 @@
   <div class="product-image">
     <img [src]="product.imageUrl" [alt]="product.name" *ngIf="product.imageUrl">
     <div class="placeholder-image" *ngIf="!product.imageUrl">
-      <div class="logo-placeholder">
-        <span class="logo-text">DogoSoft</span>
-        <span class="logo-icon">💻</span>
-      </div>
+      <img src="/assets/logo.png" alt="Logo DogoSoft" class="placeholder-logo">
     </div>
   </div>
   
