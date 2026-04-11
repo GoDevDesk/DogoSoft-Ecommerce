@@ -1,6 +1,30 @@
 <div class="product-list-container">
   <div class="container">
-    <h2 class="page-title">Nuestros Productos</h2>
+    <section class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Marketplace digital</p>
+        <h1>Software profesional para acelerar tu trabajo</h1>
+        <p class="hero-description">
+          Descubre herramientas seleccionadas, licencias confiables y descarga inmediata en un solo lugar.
+        </p>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="label">Productos</span>
+          <span class="value">{{ products.length }}</span>
+        </div>
+        <div class="stat-card">
+          <span class="label">Entrega</span>
+          <span class="value">Inmediata</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-header">
+      <h2 class="page-title">Nuestros Productos</h2>
+      <p>Elige la mejor opción para tu equipo y añade al carrito en segundos.</p>
+    </div>
     
     <div class="loading" *ngIf="isLoading">
       <p>Cargando productos...</p>
