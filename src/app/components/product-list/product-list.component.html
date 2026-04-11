@@ -1,5 +1,26 @@
 <div class="product-list-container">
   <div class="container">
+    <section id="novedades" class="updates-section">
+      <div class="section-header">
+        <h2 class="page-title">Novedades</h2>
+        <p>Publicá acá nuevas funciones, integraciones y anuncios importantes de tu emprendimiento.</p>
+      </div>
+
+      <article class="update-card" *ngFor="let update of updates">
+        <div class="update-media">
+          <img [src]="update.image" [alt]="update.title" (error)="onUpdateImageError($event)">
+        </div>
+        <div class="update-content">
+          <span class="update-badge">{{ update.date }}</span>
+          <h3>{{ update.title }}</h3>
+          <p>{{ update.description }}</p>
+          <ul>
+            <li *ngFor="let point of update.highlights">{{ point }}</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
     <section class="hero-panel">
       <div class="hero-copy">
         <p class="eyebrow">DogoSoft</p>
@@ -7,18 +28,14 @@
         <p class="hero-description">
           Te ayudamos a digitalizar procesos con herramientas confiables, soporte cercano y enfoque real en PyMEs.
         </p>
-        <div class="hero-actions">
-          <a href="#catalogo" class="btn btn-primary">Ver catálogo</a>
-          <a href="#novedades" class="btn btn-secondary">Ir a novedades</a>
-        </div>
       </div>
 
       <div class="hero-logo">
-        <img src="assets/logo.png" alt="Logo DogoSoft">
+        <img src="/assets/logo.png" alt="Logo DogoSoft">
       </div>
     </section>
 
-    <section id="catalogo" class="products-block">
+    <section class="products-block">
       <div class="section-header">
         <h2 class="page-title">Nuestros Productos</h2>
         <p>Elige la mejor opción para tu equipo y añade al carrito en segundos.</p>
@@ -39,27 +56,6 @@
       <div class="empty-state" *ngIf="!isLoading && products.length === 0">
         <p>No hay productos disponibles en este momento.</p>
       </div>
-    </section>
-
-    <section id="novedades" class="updates-section">
-      <div class="section-header">
-        <h2 class="page-title">Novedades</h2>
-        <p>Publicá acá nuevas funciones, integraciones y anuncios importantes de tu emprendimiento.</p>
-      </div>
-
-      <article class="update-card" *ngFor="let update of updates">
-        <div class="update-media">
-          <img [src]="update.image" [alt]="update.title" (error)="onUpdateImageError($event)">
-        </div>
-        <div class="update-content">
-          <span class="update-badge">{{ update.date }}</span>
-          <h3>{{ update.title }}</h3>
-          <p>{{ update.description }}</p>
-          <ul>
-            <li *ngFor="let point of update.highlights">{{ point }}</li>
-          </ul>
-        </div>
-      </article>
     </section>
   </div>
 </div>

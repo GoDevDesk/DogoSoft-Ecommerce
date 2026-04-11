@@ -4,6 +4,73 @@
     radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 45%),
     radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 40%);
 
+  .updates-section {
+    background-color: #ffffff;
+    border-radius: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 30px;
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    margin-bottom: 30px;
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .update-card {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 26px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(140deg, #f8fafc, #eef2ff);
+      border: 1px solid rgba(99, 102, 241, 0.12);
+    }
+
+    .update-media {
+      img {
+        width: 100%;
+        display: block;
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(30, 41, 59, 0.15);
+      }
+    }
+
+    .update-content {
+      .update-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #1e3a8a;
+        background-color: #dbeafe;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        color: #0f172a;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #475569;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        margin-left: 18px;
+        color: #334155;
+        display: grid;
+        gap: 6px;
+      }
+    }
+  }
+
   .hero-panel {
     background: linear-gradient(120deg, #0f172a 0%, #1e3a8a 70%, #0ea5e9 100%);
     border-radius: 24px;
@@ -42,7 +109,7 @@
       }
     }
 
-    .hero-brand {
+    .hero-logo {
       justify-self: center;
       width: min(300px, 100%);
       border-radius: 26px;
@@ -56,82 +123,6 @@
         width: 100%;
         border-radius: 16px;
         display: block;
-      }
-    }
-  }
-
-  .news-section {
-    background-color: #ffffff;
-    border-radius: 24px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    padding: 30px;
-    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
-
-    .news-header {
-      margin-bottom: 18px;
-
-      h3 {
-        font-size: 1.8rem;
-        color: #0f172a;
-        margin-bottom: 8px;
-      }
-
-      p {
-        color: #475569;
-      }
-    }
-
-    .news-card {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 26px;
-      align-items: start;
-      padding: 18px;
-      border-radius: 18px;
-      background: linear-gradient(140deg, #f8fafc, #eef2ff);
-      border: 1px solid rgba(99, 102, 241, 0.12);
-    }
-
-    .news-image {
-      img {
-        width: 100%;
-        display: block;
-        border-radius: 14px;
-        box-shadow: 0 12px 24px rgba(30, 41, 59, 0.15);
-      }
-    }
-
-    .news-content {
-      .update-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 6px 10px;
-        border-radius: 999px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #1e3a8a;
-        background-color: #dbeafe;
-      }
-
-      h4 {
-        font-size: 1.2rem;
-        color: #0f172a;
-        margin-bottom: 10px;
-      }
-
-      p {
-        color: #475569;
-        margin-bottom: 12px;
-      }
-
-      ul {
-        margin-left: 18px;
-        color: #334155;
-        display: grid;
-        gap: 6px;
       }
     }
   }
@@ -193,14 +184,9 @@
       border-radius: 20px;
     }
 
-    .news-section {
+    .updates-section {
       padding: 20px;
-
-      .news-header h3 {
-        font-size: 1.5rem;
-      }
-
-      .news-card {
+      .update-card {
         grid-template-columns: 1fr;
         gap: 18px;
         padding: 14px;

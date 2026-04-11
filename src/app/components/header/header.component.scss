@@ -36,13 +36,8 @@
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.14);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     backdrop-filter: blur(8px);
-  }
-
-  .logo-image {
     object-fit: contain;
     padding: 6px;
   }
