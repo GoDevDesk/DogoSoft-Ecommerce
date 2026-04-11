@@ -1,23 +1,43 @@
 <div class="product-card">
-  <div class="product-image">
-    <img [src]="product.imageUrl" [alt]="product.name" *ngIf="product.imageUrl">
-    <div class="placeholder-image" *ngIf="!product.imageUrl">
-      <div class="logo-placeholder">
-        <span class="logo-text">DogoSoft</span>
-        <span class="logo-icon">💻</span>
+  <div class="product-media">
+    <ng-container *ngIf="gallerySources.length > 0; else placeholderTpl">
+      <div class="product-gallery">
+        <div class="gallery-main">
+          <img [src]="activeGallerySrc" [alt]="product.name">
+        </div>
+        <div class="gallery-thumbs" *ngIf="gallerySources.length > 1" role="tablist" aria-label="Vistas del producto">
+          <button
+            *ngFor="let url of gallerySources; let i = index"
+            type="button"
+            class="thumb"
+            [class.thumb-active]="i === activeGalleryIndex"
+            (click)="setGalleryIndex(i)"
+            [attr.aria-selected]="i === activeGalleryIndex"
+            [attr.aria-label]="'Imagen ' + (i + 1)">
+            <img [src]="url" alt="">
+          </button>
+        </div>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #placeholderTpl>
+      <div class="placeholder-image">
+        <div class="logo-placeholder">
+          <span class="logo-text">DogoSoft</span>
+          <span class="logo-icon">💻</span>
+        </div>
+      </div>
+    </ng-template>
   </div>
-  
+
   <div class="product-info">
     <h3 class="product-name">{{ product.name }}</h3>
     <p class="product-description">{{ product.description }}</p>
-    
+
     <div class="product-details">
       <span class="product-version">v{{ product.version }}</span>
       <span class="product-size">{{ product.size }}</span>
     </div>
-    
+
     <div class="product-footer">
       <span class="product-price">${{ product.price }}</span>
       <button class="btn btn-primary" (click)="onAddToCart()">

@@ -1,33 +1,39 @@
 .faq-container {
-  padding: 40px 0;
+  padding: clamp(1.5rem, 5vw, 2.5rem) 0 clamp(2rem, 6vw, 3rem);
 
   .page-title {
     text-align: center;
-    font-size: 32px;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     color: var(--dark-gray);
-    margin-bottom: 16px;
+    margin-bottom: 0.75rem;
   }
 
   .page-subtitle {
     text-align: center;
     color: var(--gray);
-    font-size: 18px;
-    margin-bottom: 40px;
-    max-width: 600px;
+    font-size: clamp(0.95rem, 2.5vw, 1.125rem);
+    line-height: 1.55;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 var(--space-page, 1rem);
   }
 
   .faq-list {
-    max-width: 800px;
-    margin: 0 auto 40px;
+    max-width: min(800px, 100%);
+    margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+    padding: 0;
   }
 
   .faq-item {
     background-color: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px var(--shadow);
-    margin-bottom: 16px;
+    border-radius: var(--radius-lg, 16px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 4px 16px var(--shadow);
+    margin-bottom: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
 
@@ -48,12 +54,13 @@
   }
 
   .faq-question {
-    padding: 24px;
+    padding: 20px 24px;
+    min-height: 52px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: background-color 0.25s ease, color 0.25s ease;
 
     h3 {
       font-size: 18px;
@@ -76,11 +83,11 @@
     padding: 0 24px;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: max-height 0.35s ease, padding 0.35s ease;
 
     &.show {
       padding: 0 24px 24px;
-      max-height: 200px;
+      max-height: min(70vh, 480px);
     }
 
     p {

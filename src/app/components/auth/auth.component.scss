@@ -1,9 +1,9 @@
 .auth-container {
-  min-height: 80vh;
+  min-height: min(80dvh, 720px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px;
+  padding: clamp(1.5rem, 5vw, 2.5rem) var(--space-page, 1rem);
 
   .card {
     width: 100%;

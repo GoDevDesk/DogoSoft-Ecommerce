@@ -8,6 +8,8 @@ export interface Product {
   description: string;
   price: number;
   imageUrl: string;
+  /** Si hay varias URLs, la tarjeta muestra galería (miniaturas + imagen principal). */
+  galleryUrls?: string[];
   downloadUrl: string;
   category: string;
   version: string;
@@ -37,129 +39,52 @@ export class ProductService {
 
   async loadProducts(): Promise<void> {
     try {
-      const products = await this.firebaseService.getProducts();
-      this.productsSubject.next(products as Product[]);
+      const raw = (await this.firebaseService.getProducts()) as Product[];
+      const fastfood = raw
+        .filter((p) => p.name === 'DogoSoft FastFood')
+        .map((p) => this.withFastFoodGallery(p as Product));
+      if (fastfood.length > 0) {
+        this.productsSubject.next(fastfood);
+      } else {
+        this.loadMockProducts();
+      }
     } catch (error) {
       console.error('Error cargando productos:', error);
-      // Si hay error con Firebase, cargar productos mock
       this.loadMockProducts();
     }
   }
 
+  private readonly fastFoodGallery = [
+    '/assets/fastfood-novedad.png',
+    '/assets/fastfood-programa.jpeg'
+  ];
+
+  private withFastFoodGallery(p: Product): Product {
+    const galleryUrls = [...this.fastFoodGallery];
+    return {
+      ...p,
+      galleryUrls,
+      imageUrl: p.imageUrl || galleryUrls[0]
+    };
+  }
+
   private loadMockProducts(): void {
-    console.log('Cargando productos mock...');
     const mockProducts: Product[] = [
       {
-        id: '1',
-        name: 'Gestor de Inventario Pro',
-        description: 'Software completo para gestión de inventarios con reportes avanzados y sincronización en tiempo real.',
-        price: 299.99,
-        imageUrl: '',
+        id: 'dogosoft-fastfood',
+        name: 'DogoSoft FastFood',
+        description:
+          'Sistema integral de pedidos para comida rápida: operación, cocina, caja, inventario, delivery, tesorería e impresión.',
+        price: 0,
+        imageUrl: this.fastFoodGallery[0],
+        galleryUrls: [...this.fastFoodGallery],
         downloadUrl: '',
-        category: 'Gestión',
-        version: '2.1.0',
-        size: '45 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '2',
-        name: 'Contabilidad Empresarial',
-        description: 'Sistema de contabilidad completo con facturación electrónica y reportes fiscales automáticos.',
-        price: 199.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Contabilidad',
-        version: '1.8.5',
-        size: '32 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '3',
-        name: 'CRM Clientes Premium',
-        description: 'Gestión de relaciones con clientes, seguimiento de ventas y automatización de marketing.',
-        price: 399.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'CRM',
-        version: '3.0.2',
-        size: '67 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '4',
-        name: 'Editor de Imágenes Pro',
-        description: 'Herramienta profesional de edición de imágenes con filtros avanzados y efectos especiales.',
-        price: 149.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Multimedia',
-        version: '4.2.1',
-        size: '89 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '5',
-        name: 'Backup Automático',
-        description: 'Sistema de respaldo automático con cifrado de datos y sincronización en la nube.',
-        price: 79.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Seguridad',
-        version: '1.5.3',
-        size: '23 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '6',
-        name: 'Planificador de Tareas',
-        description: 'Organizador personal y profesional con recordatorios inteligentes y sincronización multiplataforma.',
-        price: 59.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Productividad',
-        version: '2.3.0',
-        size: '18 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '7',
-        name: 'Gestor de Proyectos',
-        description: 'Herramienta completa para gestión de proyectos con diagramas de Gantt y seguimiento de equipos.',
-        price: 249.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Gestión',
-        version: '1.9.2',
-        size: '52 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '8',
-        name: 'Antivirus Empresarial',
-        description: 'Protección avanzada contra malware con análisis en tiempo real y gestión centralizada.',
-        price: 129.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Seguridad',
-        version: '2024.1',
-        size: '156 MB',
-        createdAt: new Date()
-      },
-      {
-        id: '9',
-        name: 'Editor de Código Pro',
-        description: 'IDE profesional con soporte para múltiples lenguajes y herramientas de desarrollo integradas.',
-        price: 199.99,
-        imageUrl: '',
-        downloadUrl: '',
-        category: 'Desarrollo',
-        version: '5.1.0',
-        size: '234 MB',
+        category: 'POS',
+        version: '1.8',
+        size: '—',
         createdAt: new Date()
       }
     ];
-    
-    console.log('Productos mock cargados:', mockProducts.length);
     this.productsSubject.next(mockProducts);
   }
 
