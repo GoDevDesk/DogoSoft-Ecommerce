@@ -12,19 +12,7 @@ import { ProductCardComponent } from '../product-card/product-card.component';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
   isLoading = true;
-  updates = [
-    {
-      title: 'FastFood POS para comercios gastronómicos',
-      date: 'Abril 2026',
-      description: 'Sistema integral para pedidos, cocina, caja e inventario pensado para negocios de comida rápida.',
-      image: '/assets/novedad.jpg',
-      highlights: [
-        'Gestión centralizada de pedidos, cocina, caja e inventario.',
-        'Módulos para delivery, tesorería e impresión en una sola plataforma.',
-        'Ruta de evolución con más reportes, integraciones y experiencia en la nube.'
-      ]
-    }
-  ];
+  newsImage = '/assets/novedad.jpg';
 
   constructor(private productService: ProductService) {}
 
@@ -39,9 +27,9 @@ export class ProductListComponent implements OnInit {
     this.productService.addToCart(product);
   }
 
-  onUpdateImageError(event: Event) {
+  onNewsImageError(event: Event) {
     const image = event.target as HTMLImageElement;
     image.src = '/assets/logo.png';
-    image.alt = 'Imagen de novedad DogoSoft';
+    image.alt = 'Novedad DogoSoft';
   }
 }

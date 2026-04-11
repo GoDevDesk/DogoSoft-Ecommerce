@@ -12,16 +12,8 @@
     box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
     margin-bottom: 30px;
 
-    .section-header {
-      margin-bottom: 18px;
-    }
-
     .update-card {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 26px;
-      align-items: start;
-      padding: 18px;
+      padding: 14px;
       border-radius: 18px;
       background: linear-gradient(140deg, #f8fafc, #eef2ff);
       border: 1px solid rgba(99, 102, 241, 0.12);
@@ -33,40 +25,6 @@
         display: block;
         border-radius: 14px;
         box-shadow: 0 12px 24px rgba(30, 41, 59, 0.15);
-      }
-    }
-
-    .update-content {
-      .update-badge {
-        display: inline-flex;
-        align-items: center;
-        padding: 6px 10px;
-        border-radius: 999px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #1e3a8a;
-        background-color: #dbeafe;
-      }
-
-      h3 {
-        font-size: 1.2rem;
-        color: #0f172a;
-        margin-bottom: 10px;
-      }
-
-      p {
-        color: #475569;
-        margin-bottom: 12px;
-      }
-
-      ul {
-        margin-left: 18px;
-        color: #334155;
-        display: grid;
-        gap: 6px;
       }
     }
   }
@@ -187,8 +145,6 @@
     .updates-section {
       padding: 20px;
       .update-card {
-        grid-template-columns: 1fr;
-        gap: 18px;
         padding: 14px;
       }
     }

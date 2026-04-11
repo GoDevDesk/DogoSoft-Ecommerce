@@ -3,20 +3,11 @@
     <section id="novedades" class="updates-section">
       <div class="section-header">
         <h2 class="page-title">Novedades</h2>
-        <p>Publicá acá nuevas funciones, integraciones y anuncios importantes de tu emprendimiento.</p>
       </div>
 
-      <article class="update-card" *ngFor="let update of updates">
+      <article class="update-card">
         <div class="update-media">
-          <img [src]="update.image" [alt]="update.title" (error)="onUpdateImageError($event)">
-        </div>
-        <div class="update-content">
-          <span class="update-badge">{{ update.date }}</span>
-          <h3>{{ update.title }}</h3>
-          <p>{{ update.description }}</p>
-          <ul>
-            <li *ngFor="let point of update.highlights">{{ point }}</li>
-          </ul>
+          <img [src]="newsImage" alt="Novedades DogoSoft" (error)="onNewsImageError($event)">
         </div>
       </article>
     </section>
