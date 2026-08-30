@@ -1,52 +1,62 @@
-<div class="product-list-container">
+<div class="landing-page">
   <div class="container">
-    <section id="novedades" class="updates-section">
-      <div class="section-header">
-        <h2 class="page-title">Novedades</h2>
+    <section class="hero-section" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Software para gastronomía</p>
+        <h1>Gestioná pedidos, cocina, caja y delivery en un solo lugar</h1>
+        <p class="hero-description">
+          DogoSoft FastFood te ayuda a ordenar la operación de tu local para vender más, reducir errores y escalar con claridad.
+        </p>
+
+        <ul class="key-points">
+          <li *ngFor="let point of keyPoints">{{ point }}</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a routerLink="/contact" class="btn btn-primary">Quiero una demo</a>
+          <a href="#producto" class="btn btn-secondary">Ver producto</a>
+        </div>
       </div>
 
-      <article class="update-card">
-        <div class="update-media">
-          <img [src]="newsImage" alt="Novedades DogoSoft" (error)="onNewsImageError($event)">
-        </div>
-      </article>
+      <div class="hero-visual">
+        <img src="/assets/landing/operations-wall.png" alt="Operación de cocina con DogoSoft FastFood">
+      </div>
     </section>
 
-    <section class="hero-panel">
-      <div class="hero-copy">
-        <p class="eyebrow">DogoSoft</p>
-        <h1>Soluciones de software para potenciar tu negocio</h1>
-        <p class="hero-description">
-          Te ayudamos a digitalizar procesos con herramientas confiables, soporte cercano y enfoque real en PyMEs.
+    <section class="news-section" id="novedades">
+      <div class="section-header">
+        <h2>Novedades</h2>
+      </div>
+
+      <div class="news-card">
+        <img [src]="newsImage" alt="Novedad DogoSoft FastFood" (error)="onNewsImageError($event)">
+      </div>
+    </section>
+
+    <section class="product-section" id="producto">
+      <div class="section-header">
+        <h2>Conocé DogoSoft en acción</h2>
+        <p>
+          Una plataforma pensada para el ritmo real de la gastronomía: rápida, clara y fácil de usar por todo el equipo.
         </p>
       </div>
 
-      <div class="hero-logo">
-        <img src="/assets/logo.png" alt="Logo DogoSoft">
+      <div class="showcase-grid">
+        <article class="showcase-card" *ngFor="let item of showcaseImages">
+          <img [src]="item.src" [alt]="item.title">
+          <div class="showcase-copy">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="products-block">
-      <div class="section-header">
-        <h2 class="page-title">Nuestros Productos</h2>
-        <p>Elige la mejor opción para tu equipo y añade al carrito en segundos.</p>
-      </div>
-      
-      <div class="loading" *ngIf="isLoading">
-        <p>Cargando productos...</p>
-      </div>
-      
-      <div class="products-grid" *ngIf="!isLoading">
-        <app-product-card 
-          *ngFor="let product of products" 
-          [product]="product"
-          (addToCart)="onAddToCart($event)">
-        </app-product-card>
-      </div>
-      
-      <div class="empty-state" *ngIf="!isLoading && products.length === 0">
-        <p>No hay productos disponibles en este momento.</p>
-      </div>
+    <section class="closing-cta" id="solucion">
+      <img src="/assets/logo.png" alt="Logo DogoSoft" class="closing-logo">
+      <h2>¿Listo para tu primera versión en producción?</h2>
+      <p>Te mostramos una demo guiada y cómo adaptarlo a tu local desde el día uno.</p>
+      <a routerLink="/contact" class="btn btn-primary">Hablar con DogoSoft</a>
     </section>
   </div>
 </div>
