@@ -5,8 +5,17 @@
 </main>
 
 <footer class="footer">
-  <div class="container">
-    <p>&copy; 2026 DogoSoft. Todos los derechos reservados.</p>
-    <p>Tu tienda de software de confianza</p>
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">DogoSoft FastFood</p>
+      <p>Sistema web para locales de comida rápida en Argentina.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Pie de página">
+      <a routerLink="/" fragment="planes">Planes</a>
+      <a routerLink="/" fragment="faq">Preguntas</a>
+      <a routerLink="/contact">Contacto</a>
+      <a [href]="'mailto:' + site.email">{{ site.email }}</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 DogoSoft. Todos los derechos reservados.</p>
   </div>
 </footer>

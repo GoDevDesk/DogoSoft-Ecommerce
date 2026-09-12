@@ -1,28 +1,27 @@
 <div class="faq-container">
   <div class="container">
-    <h2 class="page-title">Preguntas Frecuentes</h2>
-    <p class="page-subtitle">Encuentra respuestas a las preguntas más comunes sobre nuestros productos y servicios</p>
-    
+    <h2 class="page-title">Preguntas frecuentes</h2>
+    <p class="page-subtitle">Prueba gratis, planes, pagos y qué incluye DogoSoft FastFood.</p>
+
     <div class="faq-list">
-      <div 
-        class="faq-item" 
-        *ngFor="let faq of faqs; let i = index"
-        [class.open]="openFaq === i">
-        
-        <div class="faq-question" (click)="toggleFaq(i)">
-          <h3>{{ faq.question }}</h3>
-          <span class="faq-icon">{{ openFaq === i ? '−' : '+' }}</span>
+      @for (faq of faqs; track faq.question; let i = $index) {
+        <div class="faq-item" [class.open]="openFaq === i">
+          <button type="button" class="faq-question" (click)="toggleFaq(i)" [attr.aria-expanded]="openFaq === i">
+            <h3>{{ faq.question }}</h3>
+            <span class="faq-icon" aria-hidden="true">{{ openFaq === i ? '−' : '+' }}</span>
+          </button>
+          @if (openFaq === i) {
+            <div class="faq-answer show">
+              <p>{{ faq.answer }}</p>
+            </div>
+          }
         </div>
-        
-        <div class="faq-answer" [class.show]="openFaq === i">
-          <p>{{ faq.answer }}</p>
-        </div>
-      </div>
+      }
     </div>
-    
+
     <div class="faq-footer">
-      <p>¿No encontraste la respuesta que buscabas?</p>
-      <a routerLink="/contact" class="btn btn-primary">Contáctanos</a>
+      <p>¿Todavía tenés dudas sobre el plan o la prueba?</p>
+      <a routerLink="/contact" class="btn btn-primary">Escribinos</a>
     </div>
   </div>
 </div>

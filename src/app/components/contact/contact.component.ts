@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { siteConfig } from '../../site.config';
 
 @Component({
   selector: 'app-contact',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
+  private readonly route = inject(ActivatedRoute);
+  readonly email = siteConfig.email;
+
   contactForm = {
     name: '',
     email: '',
@@ -19,22 +23,35 @@ export class ContactComponent {
   isLoading = false;
   isSubmitted = false;
 
-  async onSubmit() {
+  ngOnInit() {
+    const intent = this.route.snapshot.queryParamMap.get('intent');
+    if (intent === 'trial') {
+      this.contactForm.subject = 'Quiero probar DogoSoft FastFood 14 días';
+      this.contactForm.message =
+        'Hola, quiero crear un local y empezar la prueba de 14 días. Mi rubro es: ';
+    }
+  }
+
+  onSubmit() {
     if (!this.contactForm.name || !this.contactForm.email || !this.contactForm.message) {
       return;
     }
 
     this.isLoading = true;
-    
-    // Simular envío del formulario
-    setTimeout(() => {
-      this.isLoading = false;
-      this.isSubmitted = true;
-      this.resetForm();
-    }, 2000);
+    const body = [
+      this.contactForm.message,
+      '',
+      `Nombre: ${this.contactForm.name}`,
+      `Email: ${this.contactForm.email}`
+    ].join('\n');
+    const mailto = `mailto:${this.email}?subject=${encodeURIComponent(this.contactForm.subject || 'Consulta DogoSoft FastFood')}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    this.isLoading = false;
+    this.isSubmitted = true;
   }
 
   resetForm() {
+    this.isSubmitted = false;
     this.contactForm = {
       name: '',
       email: '',
@@ -42,31 +59,4 @@ export class ContactComponent {
       message: ''
     };
   }
-
-  contactInfo = [
-    {
-      icon: '📧',
-      title: 'Email',
-      value: 'contacto@dogosoft.com',
-      description: 'Respuesta en 24 horas'
-    },
-    {
-      icon: '📞',
-      title: 'Teléfono',
-      value: '+1 (555) 123-4567',
-      description: 'Lunes a Viernes 9AM-6PM'
-    },
-    {
-      icon: '💬',
-      title: 'Chat en Vivo',
-      value: 'Disponible 24/7',
-      description: 'Soporte técnico inmediato'
-    },
-    {
-      icon: '📍',
-      title: 'Oficina',
-      value: '123 Tech Street, Silicon Valley',
-      description: 'Visítanos en nuestras oficinas'
-    }
-  ];
 }

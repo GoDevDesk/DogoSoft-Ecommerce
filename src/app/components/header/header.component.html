@@ -1,34 +1,28 @@
 <header class="header">
-  <div class="container">
-    <a routerLink="/" class="logo">
-      <img src="/assets/logo.png" alt="DogoSoft" class="logo-image" width="40" height="40">
-      <span class="logo-text">DogoSoft</span>
+  <div class="container header-bar">
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      <img src="/assets/logo.png" alt="" class="logo-image" width="40" height="40">
+      <span class="logo-text">DogoSoft <em>FastFood</em></span>
     </a>
-    
-    <nav class="nav">
-      <a routerLink="/products" routerLinkActive="active">Productos</a>
-      <a routerLink="/faq" routerLinkActive="active">Preguntas Frecuentes</a>
-      <a routerLink="/contact" routerLinkActive="active">Contacto</a>
-      
-      <div class="cart-icon" routerLink="/cart">
-        <div class="cart-info">
-          <span class="cart-icon-symbol">🛒</span>
-          <div class="cart-details">
-            <span class="cart-count">{{ cartItemCount }} productos</span>
-            <span class="cart-total">${{ cartTotal | number:'1.2-2' }}</span>
-          </div>
-        </div>
-        <span class="badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
-      </div>
-      
-      <div *ngIf="user$ | async as user; else authButtons" class="user-menu">
-        <span>Hola, {{ user.email }}</span>
-        <button class="btn btn-outline" (click)="signOut()">Cerrar Sesión</button>
-      </div>
-      
-      <ng-template #authButtons>
-        <a routerLink="/auth" class="btn btn-outline">Iniciar Sesión</a>
-      </ng-template>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      [attr.aria-expanded]="menuOpen"
+      aria-controls="site-nav"
+      (click)="toggleMenu()">
+      <span class="sr-only">Menú</span>
+      <span [class.open]="menuOpen"></span>
+    </button>
+
+    <nav class="nav" id="site-nav" [class.open]="menuOpen">
+      <a routerLink="/" fragment="como-funciona" (click)="closeMenu()">Cómo funciona</a>
+      <a routerLink="/" fragment="modulos" (click)="closeMenu()">Módulos</a>
+      <a routerLink="/" fragment="carta" (click)="closeMenu()">Carta online</a>
+      <a routerLink="/" fragment="planes" (click)="closeMenu()">Planes</a>
+      <a routerLink="/" fragment="faq" (click)="closeMenu()">Preguntas</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
+      <a class="btn btn-primary nav-cta" routerLink="/contact" [queryParams]="{ intent: 'trial' }" (click)="closeMenu()">Probar 14 días gratis</a>
     </nav>
   </div>
 </header>

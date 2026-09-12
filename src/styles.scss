@@ -1,24 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+@use './styles/landing';
 
 :root {
-  --primary-color: #3b82f6;
-  --primary-dark: #2563eb;
+  /* Tokens de DogoSoft FastFood (app) */
+  --brand-navy: #152f4f;
+  --brand-blue: #2d6a9e;
+  --brand-mid: #1e4568;
+  --brand-sky: #5fafcc;
+  --brand-sky-soft: #d7ebf5;
+  --brand-navy-hover: #0f243d;
+  --brand-gradient: linear-gradient(105deg, #152f4f 0%, #1e4568 55%, #2d6a9e 100%);
+  --brand-ring: rgba(45, 106, 158, 0.22);
+  /* Carta online (tema del cliente) */
+  --sf-accent: #d4644a;
+  --sf-accent-dark: #b84e36;
+  --sf-bg: #fff9f4;
+  --ember: var(--sf-accent);
+  --ember-hot: var(--sf-accent-dark);
+  --coal: var(--brand-navy);
+  --paper: #ffffff;
+  --cream: #f8fafc;
+  --ink: #0f172a;
+  --primary-color: var(--brand-navy);
+  --primary-dark: var(--brand-navy-hover);
   --secondary-color: #f1f5f9;
-  --accent-color: #0ea5e9;
+  --accent-color: var(--brand-sky);
   --white: #ffffff;
   --light-gray: #f8fafc;
   --gray: #64748b;
   --dark-gray: #0f172a;
   --success: #16a34a;
   --danger: #dc2626;
-  --warning: #eab308;
-  --shadow: rgba(15, 23, 42, 0.08);
-  --shadow-lg: rgba(15, 23, 42, 0.12);
+  --warning: #ca8a04;
+  --shadow: rgba(15, 23, 42, 0.05);
+  --shadow-lg: rgba(21, 47, 79, 0.12);
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --font-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Inter', var(--font-sans);
   --container-max: 1120px;
   --space-page: clamp(1rem, 4vw, 1.75rem);
 }
@@ -38,11 +59,15 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--light-gray);
-  color: var(--dark-gray);
+  background-color: var(--cream);
+  color: var(--ink);
   line-height: 1.6;
   min-height: 100dvh;
   text-rendering: optimizeLegibility;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 :focus-visible {
@@ -67,21 +92,22 @@ body {
   min-height: 44px;
 
   &.btn-primary {
-    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    background: var(--brand-navy);
     color: var(--white);
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    box-shadow: 0 1px 3px rgba(21, 47, 79, 0.2);
+    border-radius: var(--radius-sm);
 
     &:hover {
-      filter: brightness(1.06);
+      background: var(--brand-navy-hover);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 4px 14px rgba(21, 47, 79, 0.25);
     }
   }
 
   &.btn-secondary {
     background-color: var(--secondary-color);
     color: var(--dark-gray);
-    border: 2px solid rgba(37, 99, 235, 0.35);
+    border: 1px solid var(--border-strong, #cbd5e1);
 
     &:hover {
       background-color: #e2e8f0;
@@ -91,11 +117,12 @@ body {
 
   &.btn-outline {
     background-color: transparent;
-    color: var(--primary-dark);
-    border: 2px solid rgba(37, 99, 235, 0.45);
+    color: var(--brand-navy);
+    border: 1px solid var(--brand-blue);
+    border-radius: var(--radius-sm);
 
     &:hover {
-      background-color: rgba(37, 99, 235, 0.08);
+      background-color: var(--brand-sky-soft);
     }
   }
 
