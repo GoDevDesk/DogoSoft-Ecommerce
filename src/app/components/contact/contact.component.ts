@@ -12,6 +12,7 @@ import { siteConfig } from '../../site.config';
 export class ContactComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   readonly email = siteConfig.email;
+  readonly site = siteConfig;
 
   contactForm = {
     name: '',
@@ -26,9 +27,9 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     const intent = this.route.snapshot.queryParamMap.get('intent');
     if (intent === 'trial') {
-      this.contactForm.subject = 'Quiero probar DogoSoft FastFood 14 días';
+      this.contactForm.subject = `Quiero probar DogoSoft FastFood ${siteConfig.trialLabel}`;
       this.contactForm.message =
-        'Hola, quiero crear un local y empezar la prueba de 14 días. Mi rubro es: ';
+        `Hola, quiero crear un local y empezar la prueba de ${siteConfig.trialLabel}. Mi rubro es: `;
     }
   }
 

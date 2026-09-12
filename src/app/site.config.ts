@@ -5,11 +5,13 @@ export const siteConfig = {
   email: 'contacto@dogosoft.com',
   /** URL para crear el local / iniciar la prueba. Si está vacío, el CTA va a contacto. */
   signupUrl: '/contact?intent=trial',
-  trialDays: 14,
+  trialDays: 30,
+  trialLabel: '1 mes',
+  trialCta: 'Probar 1 mes gratis',
   graceDays: 3,
   prices: {
     starterLabel: '$ 9.900 / mes',
-    proLabel: '$ 19.900 / mes',
+    proLabel: '$ 16.000 / mes',
     enterpriseLabel: '$ 34.900 / mes'
   }
 } as const;
@@ -29,7 +31,7 @@ export const subscriptionPlans = [
       'Cierre del pedido por WhatsApp',
       'Productos y combos'
     ],
-    cta: 'Probar 14 días gratis'
+    cta: siteConfig.trialCta
   },
   {
     id: 'pro',
@@ -37,7 +39,7 @@ export const subscriptionPlans = [
     badge: 'Más elegido',
     featured: true,
     blurb: 'Todas las funciones del sistema para operar el local completo.',
-    amount: '$ 19.900',
+    amount: '$ 16.000',
     period: '/ mes',
     features: [
       'Todo lo de Starter',
@@ -71,7 +73,7 @@ export const landingFaqs = [
   {
     question: '¿Hay prueba gratis?',
     answer:
-      'Sí. Al crear tu local tenés 14 días de prueba gratis, sin compromiso. Podés cargar productos, armar la carta y probar el sistema antes de elegir plan.'
+      'Sí. Al crear tu local tenés 1 mes de prueba gratis, sin compromiso. Podés cargar productos, armar la carta y probar el sistema antes de elegir plan.'
   },
   {
     question: '¿Cómo se paga la suscripción?',

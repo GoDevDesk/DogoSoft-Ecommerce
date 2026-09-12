@@ -47,7 +47,7 @@ export class LandingComponent {
     },
     {
       title: 'Sin instalar',
-      text: 'Sistema web, desde el navegador. 14 días de prueba al crear el local.'
+      text: 'Sistema web, desde el navegador. 1 mes de prueba al crear el local.'
     }
   ];
 
@@ -158,7 +158,7 @@ export class LandingComponent {
     meta.updateTag({
       name: 'description',
       content:
-        'Sistema web para hamburgueserías, pizzerías y rotiserías en Argentina. Mostrador, cocina, delivery propio y carta online en un solo lugar. 14 días de prueba gratis.'
+        'Sistema web para hamburgueserías, pizzerías y rotiserías en Argentina. Mostrador, cocina, delivery propio y carta online en un solo lugar. 1 mes de prueba gratis.'
     });
   }
 

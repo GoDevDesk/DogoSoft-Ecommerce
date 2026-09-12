@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { siteConfig } from '../../site.config';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  readonly site = siteConfig;
   menuOpen = false;
 
   toggleMenu() {

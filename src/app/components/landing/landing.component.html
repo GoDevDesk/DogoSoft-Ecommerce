@@ -3,18 +3,18 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">SaaS para comida rápida · Argentina</p>
-        <h1>Un solo sistema para mostrador, cocina, delivery y carta online.</h1>
+        <p class="eyebrow">Para comida rápida · Argentina</p>
+        <h1>Todo tu negocio en un solo lugar.</h1>
         <p class="lede">
           DogoSoft FastFood es el sistema web de gestión para hamburgueserías, pizzerías, rotiserías
-          y locales con delivery propio. Vendé, cobrá y coordiná el servicio sin saltar de herramienta.
+          y locales con delivery propio. Mostrador, cocina, delivery y carta online, sin saltar de herramienta.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">Probar 14 días gratis</a>
+          <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
           <a class="btn btn-ghost" routerLink="/" fragment="planes">Ver planes</a>
         </div>
         <ul class="hero-pills">
-          <li>14 días de prueba al crear el local</li>
+          <li>{{ site.trialLabel }} de prueba al crear el local</li>
           <li>Suscripción mensual, sin comisión por pedido</li>
           <li>Carta con QR incluida · Mercado Pago</li>
         </ul>
@@ -120,7 +120,7 @@
         </li>
         <li>
           <strong>Prueba real.</strong>
-          14 días gratis al crear el local. Después, suscripción mensual con Mercado Pago.
+          {{ site.trialLabel }} gratis al crear el local. Después, suscripción mensual con Mercado Pago.
         </li>
       </ul>
     </div>
@@ -217,7 +217,7 @@
       <header class="section-head center">
         <p class="eyebrow">Precios</p>
         <h2>Arrancá simple. Escalá cuando el local lo pida.</h2>
-        <p>Suscripción mensual con Mercado Pago. 14 días de prueba al crear el local. No nos quedamos con un porcentaje de cada venta.</p>
+        <p>Suscripción mensual con Mercado Pago. {{ site.trialLabel }} de prueba al crear el local. No nos quedamos con un porcentaje de cada venta.</p>
       </header>
 
       <div class="price-grid">
@@ -323,20 +323,20 @@
 
   <section class="band cta-final" id="probar" appReveal>
     <div class="container center">
-      <h2>Creá tu local y probalo 14 días.</h2>
+      <h2>Creá tu local y probalo {{ site.trialLabel }}.</h2>
       <p>
         Sin instalar nada. Si el pago de una suscripción activa falla, hay {{ site.graceDays }} días de gracia
         antes de bloquear el acceso.
       </p>
       <div class="hero-actions center-actions">
-        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">Probar 14 días gratis</a>
+        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
         <a class="btn btn-ghost" routerLink="/contact">Hablar con DogoSoft</a>
       </div>
     </div>
   </section>
 
   <div class="sticky-cta">
-    <p>14 días gratis · sin comisión por pedido</p>
+    <p>{{ site.trialLabel }} gratis · sin comisión por pedido</p>
     <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">Probar ahora</a>
   </div>
 </div>
