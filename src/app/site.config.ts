@@ -11,7 +11,7 @@ export const siteConfig = {
   graceDays: 3,
   prices: {
     starterLabel: '$ 9.900 / mes',
-    proLabel: '$ 16.000 / mes',
+    proLabel: '$ 19.900 / mes',
     enterpriseLabel: '$ 34.900 / mes'
   }
 } as const;
@@ -31,6 +31,7 @@ export const subscriptionPlans = [
       'Cierre del pedido por WhatsApp',
       'Productos y combos'
     ],
+    available: true,
     cta: siteConfig.trialCta
   },
   {
@@ -39,8 +40,9 @@ export const subscriptionPlans = [
     badge: 'Más elegido',
     featured: true,
     blurb: 'Todas las funciones del sistema para operar el local completo.',
-    amount: '$ 16.000',
+    amount: '$ 19.900',
     period: '/ mes',
+    available: true,
     features: [
       'Todo lo de Starter',
       'POS, cocina y pedidos',
@@ -48,15 +50,16 @@ export const subscriptionPlans = [
       'Delivery y reportes',
       'Listas de precios y configuración completa'
     ],
-    cta: 'Crear mi local'
+    cta: siteConfig.trialCta
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    badge: 'Premium',
+    badge: 'Próximamente',
     featured: false,
+    available: false,
     blurb:
-      'Para cadenas y operaciones avanzadas. Hoy incluye todo Pro; las novedades premium llegan primero acá.',
+      'Para cadenas y operaciones avanzadas. Todavía no está a la venta; las novedades premium van a llegar primero acá.',
     amount: '$ 34.900',
     period: '/ mes',
     features: [
@@ -65,7 +68,7 @@ export const subscriptionPlans = [
       'Soporte prioritario',
       'Pensado para operar a escala'
     ],
-    cta: 'Hablar con DogoSoft'
+    cta: 'Próximamente'
   }
 ] as const;
 
@@ -83,7 +86,7 @@ export const landingFaqs = [
   {
     question: '¿Cobran comisión por cada pedido o venta?',
     answer:
-      'No. El precio es la suscripción mensual del plan. No nos quedamos con un porcentaje de tus ventas. La carta online está incluida en los tres planes.'
+      'No. El precio es la suscripción mensual del plan. No nos quedamos con un porcentaje de tus ventas. La carta online está incluida en Starter y Pro.'
   },
   {
     question: '¿Qué pasa si falla un pago?',
@@ -93,7 +96,7 @@ export const landingFaqs = [
   {
     question: '¿Puedo cambiar de plan después?',
     answer:
-      'Sí. Desde la configuración del local gestionás la suscripción y podés pasar de Starter a Pro o Enterprise (o al revés) cuando el negocio lo pida.'
+      'Sí. Desde la configuración del local gestionás la suscripción y podés pasar de Starter a Pro (o al revés) cuando el negocio lo pida. Enterprise todavía no está disponible.'
   },
   {
     question: '¿Qué incluye Starter?',
@@ -108,7 +111,7 @@ export const landingFaqs = [
   {
     question: '¿Qué incluye Enterprise?',
     answer:
-      'Todo lo de Pro, con prioridad en nuevas funciones y soporte prioritario. Está pensado para cadenas y operaciones a escala. Hoy incluye el mismo sistema Pro; las novedades premium llegan primero a este plan.'
+      'Enterprise todavía no está a la venta. Cuando se habilite, va a incluir todo lo de Pro, con prioridad en nuevas funciones y soporte. Está pensado para cadenas y operaciones a escala.'
   },
   {
     question: '¿Tengo que instalar un programa?',
@@ -118,7 +121,7 @@ export const landingFaqs = [
   {
     question: '¿La carta online se paga aparte?',
     answer:
-      'No. Está incluida en Starter, Pro y Enterprise. En Starter el pedido cierra por WhatsApp. En Pro y Enterprise entra al mismo flujo de cocina y gestión.'
+      'No. Está incluida en Starter y Pro. En Starter el pedido cierra por WhatsApp. En Pro entra al mismo flujo de cocina y gestión.'
   },
   {
     question: '¿Se integra con PedidosYa o Rappi?',

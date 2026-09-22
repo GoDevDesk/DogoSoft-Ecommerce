@@ -99,7 +99,7 @@ export class LandingComponent {
     {
       id: 'full',
       title: 'Pro',
-      lead: 'Cuando el local deja de ir a ojo (Pro y Enterprise)',
+      lead: 'Cuando el local deja de ir a ojo (plan Pro)',
       points: [
         'Proveedores y compras a proveedor',
         'Stock de insumos, movimientos y ajustes',
@@ -120,7 +120,7 @@ export class LandingComponent {
     },
     {
       title: 'Stock a ojo',
-      text: 'Insumos, compras y faltantes en Pro y Enterprise.'
+      text: 'Insumos, compras y faltantes en el plan Pro.'
     },
     {
       title: 'Combos imposibles',

@@ -1,40 +1,17 @@
-<div class="product-stage">
-  <div class="laptop">
-    <p class="stage-live">El sistema en uso · {{ desktopClip.label }}</p>
-    <div class="laptop-screen">
-      <video
-        #desktop
-        class="demo-video"
-        [src]="desktopClip.src"
-        autoplay
-        muted
-        playsinline
-        [muted]="true"
-        [volume]="0"
-        preload="auto"
-        (ended)="nextDesktop()"
-        (loadeddata)="onClipReady('desktop')"
-        [attr.aria-label]="'DogoSoft FastFood en computadora: ' + desktopClip.label">
-      </video>
-    </div>
-    <div class="laptop-base" aria-hidden="true"></div>
-  </div>
-
-  <figure class="phone">
-    <video
-      #phone
-      class="phone-video"
-      [src]="phoneClip.src"
-      autoplay
-      muted
-      playsinline
-      [muted]="true"
-      [volume]="0"
-      preload="auto"
-      (ended)="nextPhone()"
-      (loadeddata)="onClipReady('phone')"
-      [attr.aria-label]="'DogoSoft FastFood en celular: ' + phoneClip.label">
-    </video>
-    <figcaption>{{ phoneClip.label }} en el celular</figcaption>
-  </figure>
+<div class="hero-demo">
+  <p class="stage-live">El sistema en uso</p>
+  <video
+    #demo
+    class="demo-video"
+    src="/assets/media/demo/app-resumen.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    [muted]="true"
+    [volume]="0"
+    preload="auto"
+    (loadeddata)="onReady()"
+    aria-label="DogoSoft FastFood: recorrido del sistema">
+  </video>
 </div>

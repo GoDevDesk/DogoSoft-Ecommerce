@@ -53,26 +53,35 @@
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">En el local</p>
-        <h2>Mostrador y cocina, con el mismo sistema.</h2>
+        <h2>Mostrador, caja y números, con el mismo sistema.</h2>
       </header>
-      <div class="photo-grid">
+      <div class="photo-grid photo-grid-3">
         <figure class="photo-card">
           <img
-            src="/assets/media/mostrador.jpg"
-            alt="Cajero usando DogoSoft FastFood en el mostrador, con catálogo, pedido y carta online con QR"
-            width="1200"
-            height="800"
+            src="/assets/media/app-pos.png"
+            alt="Punto de venta de DogoSoft FastFood: catálogo, pedido actual y carta online con QR"
+            width="1600"
+            height="900"
             loading="lazy">
-          <figcaption>POS en el mostrador: venta, stock y QR de la carta.</figcaption>
+          <figcaption>POS: venta, delivery y QR de la carta en la misma pantalla.</figcaption>
         </figure>
         <figure class="photo-card">
           <img
-            src="/assets/media/cocina.jpg"
-            alt="Pantalla de cocina con pedidos de salón, delivery y para llevar mientras se cocinan hamburguesas"
-            width="1200"
-            height="800"
+            src="/assets/media/app-cuentas.png"
+            alt="Cuentas contables: efectivo, proveedores, inventario y resultado del negocio"
+            width="1600"
+            height="900"
             loading="lazy">
-          <figcaption>Cocina: salón, delivery y para llevar en un solo tablero.</figcaption>
+          <figcaption>Cuentas: efectivo, deudas y resultado del local.</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <img
+            src="/assets/media/app-reportes.png"
+            alt="Reporte de ventas por producto con ranking y gráficos"
+            width="1600"
+            height="900"
+            loading="lazy">
+          <figcaption>Reportes: qué se vende y cuánto, por período.</figcaption>
         </figure>
       </div>
     </div>
@@ -102,13 +111,13 @@
         <h2>Del pedido a la caja, en el mismo sistema.</h2>
         <p>
           Menos errores en cocina y en el cobro. Carta online incluida. Starter para arrancar
-          con WhatsApp; Pro y Enterprise cuando el local necesita POS, stock y el reparto.
+          con WhatsApp; Pro cuando el local necesita POS, stock y el reparto.
         </p>
       </header>
       <ul class="benefit-list">
         <li>
           <strong>Todo junto.</strong>
-          POS, operación, tesorería y pedidos web en Pro. Enterprise suma prioridad en novedades y soporte.
+          POS, operación, tesorería y pedidos web en Pro.
         </li>
         <li>
           <strong>Carta con QR.</strong>
@@ -169,16 +178,16 @@
           envíos y recargo de delivery si lo configurás.
         </p>
         <p>
-          Personalizás colores y apariencia. Está incluida en los tres planes: en Starter el pedido
-          cierra por WhatsApp; en Pro y Enterprise entra a cocina y caja.
+          Personalizás colores y apariencia. Está incluida en Starter y Pro: en Starter el pedido
+          cierra por WhatsApp; en Pro entra a cocina y caja.
         </p>
-        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">Crear mi local</a>
+        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
       </div>
       <aside class="carta-phones">
         <figure>
           <img
             src="/assets/media/carta-online.png"
-            alt="Carta online en el celular: categorías, búsqueda y seguimiento"
+            alt="Carta online en el celular: categorías, combos y búsqueda"
             width="390"
             height="844"
             loading="lazy">
@@ -186,12 +195,12 @@
         </figure>
         <figure>
           <img
-            src="/assets/media/seguimiento-pedido.jpg"
-            alt="Seguimiento del pedido en el celular: etapas de delivery y total"
+            src="/assets/media/app-dashboard.png"
+            alt="Dashboard en el celular: ganancias del día, ventas y evolución"
             width="390"
             height="844"
             loading="lazy">
-          <figcaption>Seguimiento en vivo, en el mismo canal.</figcaption>
+          <figcaption>El dueño ve el día desde el celular.</figcaption>
         </figure>
       </aside>
     </div>
@@ -227,11 +236,21 @@
             [class.plan-starter]="plan.id === 'starter'"
             [class.plan-pro]="plan.id === 'pro'"
             [class.plan-enterprise]="plan.id === 'enterprise'"
-            [class.featured]="plan.featured">
+            [class.featured]="plan.featured"
+            [class.locked]="!plan.available">
             <div class="plan-badges">
               <span class="plan-badge">{{ plan.badge }}</span>
             </div>
-            <h3>{{ plan.name }}</h3>
+            <h3>
+              @if (!plan.available) {
+                <span class="plan-lock" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M17 8h-1V6a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-7-2a2 2 0 1 1 4 0v2h-4V6Zm3 11.2a1.7 1.7 0 1 1-1.4-3.1 1.7 1.7 0 0 1 1.4 3.1Z"/>
+                  </svg>
+                </span>
+              }
+              {{ plan.name }}
+            </h3>
             <p class="plan-blurb">{{ plan.blurb }}</p>
             <p class="price">
               <span class="price-amount">{{ plan.amount }}</span>
@@ -243,12 +262,18 @@
                 <li>{{ item }}</li>
               }
             </ul>
-            <a
-              class="btn plan-cta"
-              routerLink="/contact"
-              [queryParams]="plan.id === 'enterprise' ? {} : { intent: 'trial' }">
-              {{ plan.cta }}
-            </a>
+            @if (plan.available) {
+              <a
+                class="btn plan-cta"
+                routerLink="/contact"
+                [queryParams]="{ intent: 'trial' }">
+                {{ plan.cta }}
+              </a>
+            } @else {
+              <button class="btn plan-cta" type="button" disabled>
+                Próximamente
+              </button>
+            }
           </article>
         }
       </div>
@@ -261,7 +286,7 @@
               <th>Incluye</th>
               <th>Starter</th>
               <th>Pro</th>
-              <th>Enterprise</th>
+              <th>Enterprise <span class="soon">próx.</span></th>
             </tr>
           </thead>
           <tbody>
