@@ -22,7 +22,7 @@
       <a routerLink="/" fragment="planes" (click)="closeMenu()">Planes</a>
       <a routerLink="/" fragment="faq" (click)="closeMenu()">Preguntas</a>
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a>
-      <a class="btn btn-primary nav-cta" routerLink="/contact" [queryParams]="{ intent: 'trial' }" (click)="closeMenu()">{{ site.trialCta }}</a>
+      <a class="btn btn-primary nav-cta" [href]="site.signupUrl" (click)="closeMenu()">{{ site.trialCta }}</a>
     </nav>
   </div>
 </header>

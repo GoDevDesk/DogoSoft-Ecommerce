@@ -3,8 +3,8 @@ export const siteConfig = {
   product: 'FastFood',
   brand: 'DogoSoft',
   email: 'contacto@dogosoft.com',
-  /** URL para crear el local / iniciar la prueba. Si está vacío, el CTA va a contacto. */
-  signupUrl: '/contact?intent=trial',
+  /** URL para crear el local / iniciar la prueba. */
+  signupUrl: 'https://dogo-sogft-app-web.vercel.app/registro',
   trialDays: 30,
   trialLabel: '1 mes',
   trialCta: 'Probar 1 mes gratis',

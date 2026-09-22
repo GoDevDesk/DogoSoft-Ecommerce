@@ -10,7 +10,7 @@
           y locales con delivery propio. Mostrador, cocina, delivery y carta online, sin saltar de herramienta.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
+          <a class="btn btn-primary" [href]="site.signupUrl">{{ site.trialCta }}</a>
           <a class="btn btn-ghost" routerLink="/" fragment="planes">Ver planes</a>
         </div>
         <ul class="hero-pills">
@@ -191,7 +191,7 @@
           Personalizás colores y apariencia. Está incluida en Starter y Pro: en Starter el pedido
           cierra por WhatsApp; en Pro entra a cocina y caja.
         </p>
-        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
+        <a class="btn btn-primary" [href]="site.signupUrl">{{ site.trialCta }}</a>
       </div>
       <aside class="carta-phones">
         <figure>
@@ -266,8 +266,7 @@
             @if (plan.available) {
               <a
                 class="btn plan-cta"
-                routerLink="/contact"
-                [queryParams]="{ intent: 'trial' }">
+                [href]="site.signupUrl">
                 {{ plan.cta }}
               </a>
             } @else {
@@ -355,7 +354,7 @@
         antes de bloquear el acceso.
       </p>
       <div class="hero-actions center-actions">
-        <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">{{ site.trialCta }}</a>
+        <a class="btn btn-primary" [href]="site.signupUrl">{{ site.trialCta }}</a>
         <a class="btn btn-ghost" routerLink="/contact">Hablar con DogoSoft</a>
       </div>
     </div>
@@ -363,6 +362,6 @@
 
   <div class="sticky-cta">
     <p>{{ site.trialLabel }} gratis · sin comisión por pedido</p>
-    <a class="btn btn-primary" routerLink="/contact" [queryParams]="{ intent: 'trial' }">Probar ahora</a>
+    <a class="btn btn-primary" [href]="site.signupUrl">Probar ahora</a>
   </div>
 </div>
