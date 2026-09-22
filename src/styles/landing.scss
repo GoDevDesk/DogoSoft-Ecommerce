@@ -61,7 +61,7 @@
 .trust-row article {
   padding: 1.1rem 1.15rem 1.2rem;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(45, 106, 158, 0.22);
+  border: 1px solid rgba(75, 144, 247, 0.22);
   background: rgba(215, 235, 245, 0.45);
 }
 
@@ -78,7 +78,8 @@
 
 .carta-phones {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 280px);
+  justify-content: center;
   gap: 0.75rem;
   align-items: end;
 }
@@ -148,8 +149,8 @@
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(1200px 500px at 10% -10%, rgba(95, 175, 204, 0.22), transparent 55%),
-    radial-gradient(800px 420px at 90% 10%, rgba(45, 106, 158, 0.28), transparent 50%),
+    radial-gradient(1200px 500px at 10% -10%, rgba(93, 162, 250, 0.22), transparent 55%),
+    radial-gradient(800px 420px at 90% 10%, rgba(75, 144, 247, 0.28), transparent 50%),
     var(--brand-navy);
   color: #f1f5f9;
   padding: clamp(2rem, 6vw, 4.5rem) 0 clamp(2.5rem, 7vw, 5rem);
@@ -159,7 +160,7 @@
   position: absolute;
   inset: auto -20% -40% 40%;
   height: 60%;
-  background: radial-gradient(circle, rgba(95, 175, 204, 0.18), transparent 65%);
+  background: radial-gradient(circle, rgba(93, 162, 250, 0.18), transparent 65%);
   pointer-events: none;
 }
 
@@ -566,43 +567,43 @@
 }
 
 .price-card.plan-starter {
-  --plan-accent: #0f766e;
-  --plan-check: #0f766e;
+  --plan-accent: #14a991;
+  --plan-check: #14a991;
 }
 
 .price-card.plan-starter .plan-badge {
   background: #d1fae5;
-  color: #115e59;
+  color: #0f766e;
 }
 
 .price-card.plan-starter .plan-cta {
-  background: #0f766e;
+  background: #14a991;
 }
 
 .price-card.plan-starter .plan-cta:hover {
-  background: #0d9488;
+  background: #0fad83;
 }
 
 .price-card.plan-pro {
-  --plan-accent: #2563eb;
-  --plan-check: #2563eb;
+  --plan-accent: var(--brand-blue);
+  --plan-check: var(--brand-blue);
   border-color: #93c5fd;
   border-top-width: 4px;
-  box-shadow: 0 14px 36px rgba(37, 99, 235, 0.18);
+  box-shadow: 0 14px 36px rgba(75, 144, 247, 0.22);
   transform: translateY(-6px);
 }
 
 .price-card.plan-pro .plan-badge {
-  background: #dbeafe;
+  background: var(--brand-sky-soft);
   color: #1d4ed8;
 }
 
 .price-card.plan-pro .plan-cta {
-  background: #2563eb;
+  background: var(--brand-blue);
 }
 
 .price-card.plan-pro .plan-cta:hover {
-  background: #1d4ed8;
+  background: #3b7de8;
 }
 
 .price-card.plan-enterprise {
@@ -610,7 +611,7 @@
   --plan-check: rgba(255, 255, 255, 0.35);
   color: #fff;
   border: 0;
-  background: #152f4f;
+  background: var(--brand-navy);
 }
 
 .price-card.plan-enterprise::before {
@@ -656,11 +657,11 @@
 }
 
 .price-card.plan-enterprise .plan-cta {
-  background: #152f4f;
+  background: var(--brand-navy);
 }
 
 .price-card.plan-enterprise .plan-cta:hover {
-  background: #0f243d;
+  background: var(--brand-navy-hover);
 }
 
 .compare-wrap {
@@ -758,7 +759,7 @@
 
 .cta-final {
   background:
-    radial-gradient(600px 200px at 50% 0%, rgba(95, 175, 204, 0.28), transparent 70%),
+    radial-gradient(600px 200px at 50% 0%, rgba(93, 162, 250, 0.28), transparent 70%),
     #f1f5f9;
   text-align: center;
 }
@@ -836,6 +837,27 @@
   padding: 0.85rem 1rem 1rem;
   font-size: 0.9rem;
   color: var(--gray);
+}
+
+.local-phone {
+  margin: 2rem auto 0;
+  max-width: 300px;
+  text-align: center;
+}
+
+.local-phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(15, 36, 61, 0.22);
+}
+
+.local-phone figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+  font-weight: 600;
 }
 
 .phone-shot {

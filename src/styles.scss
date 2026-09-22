@@ -2,15 +2,16 @@
 @use './styles/landing';
 
 :root {
-  /* Tokens de DogoSoft FastFood (app) */
-  --brand-navy: #152f4f;
-  --brand-blue: #2d6a9e;
-  --brand-mid: #1e4568;
-  --brand-sky: #5fafcc;
-  --brand-sky-soft: #d7ebf5;
-  --brand-navy-hover: #0f243d;
-  --brand-gradient: linear-gradient(105deg, #152f4f 0%, #1e4568 55%, #2d6a9e 100%);
-  --brand-ring: rgba(45, 106, 158, 0.22);
+  /* Tokens alineados a la app FastFood */
+  --brand-navy: #0f172a;
+  --brand-blue: #4b90f7;
+  --brand-mid: #1c2739;
+  --brand-sky: #5da2fa;
+  --brand-sky-soft: #e8f2fe;
+  --brand-navy-hover: #0a2027;
+  --brand-accent: #14a991;
+  --brand-gradient: linear-gradient(105deg, #0f172a 0%, #1c2739 52%, #2e486b 100%);
+  --brand-ring: rgba(75, 144, 247, 0.22);
   /* Carta online (tema del cliente) */
   --sf-accent: #d4644a;
   --sf-accent-dark: #b84e36;
@@ -33,7 +34,7 @@
   --danger: #dc2626;
   --warning: #ca8a04;
   --shadow: rgba(15, 23, 42, 0.05);
-  --shadow-lg: rgba(21, 47, 79, 0.12);
+  --shadow-lg: rgba(15, 23, 42, 0.14);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 12px;
@@ -94,13 +95,13 @@ body {
   &.btn-primary {
     background: var(--brand-navy);
     color: var(--white);
-    box-shadow: 0 1px 3px rgba(21, 47, 79, 0.2);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.2);
     border-radius: var(--radius-sm);
 
     &:hover {
       background: var(--brand-navy-hover);
       transform: translateY(-1px);
-      box-shadow: 0 4px 14px rgba(21, 47, 79, 0.25);
+      box-shadow: 0 4px 14px rgba(75, 144, 247, 0.28);
     }
   }
 
