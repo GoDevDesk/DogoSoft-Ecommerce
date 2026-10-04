@@ -10,8 +10,8 @@ export const siteConfig = {
   trialCta: 'Probar 1 mes gratis',
   graceDays: 3,
   prices: {
-    starterLabel: '$ 9.900 / mes',
-    proLabel: '$ 19.900 / mes',
+    starterLabel: '$ 6.900 / mes',
+    proLabel: '$ 14.900 / mes',
     enterpriseLabel: '$ 34.900 / mes'
   }
 } as const;
@@ -24,7 +24,7 @@ export const subscriptionPlans = [
     featured: false,
     blurb:
       'Ideal para empezar: carta pública, productos y combos. El cliente arma el pedido y continúa por WhatsApp.',
-    amount: '$ 9.900',
+    amount: '$ 6.900',
     period: '/ mes',
     features: [
       'Carta online con link y QR',
@@ -40,7 +40,7 @@ export const subscriptionPlans = [
     badge: 'Más elegido',
     featured: true,
     blurb: 'Todas las funciones del sistema para operar el local completo.',
-    amount: '$ 19.900',
+    amount: '$ 14.900',
     period: '/ mes',
     available: true,
     features: [
