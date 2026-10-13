@@ -24,7 +24,7 @@ export const subscriptionPlans = [
     featured: false,
     blurb:
       'Ideal para empezar: carta pública, productos y combos. El cliente arma el pedido y continúa por WhatsApp.',
-    amount: '$ 6.900',
+    amount: '$ 9.900',
     period: '/ mes',
     features: [
       'Carta online con link y QR',
@@ -40,7 +40,7 @@ export const subscriptionPlans = [
     badge: 'Más elegido',
     featured: true,
     blurb: 'Todas las funciones del sistema para operar el local completo, con asistente de IA.',
-    amount: '$ 14.900',
+    amount: '$ 19.900',
     period: '/ mes',
     available: true,
     features: [
