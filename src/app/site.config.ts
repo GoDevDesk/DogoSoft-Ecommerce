@@ -39,7 +39,7 @@ export const subscriptionPlans = [
     name: 'Pro',
     badge: 'Más elegido',
     featured: true,
-    blurb: 'Todas las funciones del sistema para operar el local completo.',
+    blurb: 'Todas las funciones del sistema para operar el local completo, con asistente de IA.',
     amount: '$ 14.900',
     period: '/ mes',
     available: true,
@@ -48,7 +48,8 @@ export const subscriptionPlans = [
       'POS, cocina y pedidos',
       'Stock, proveedores y tesorería',
       'Delivery y reportes',
-      'Listas de precios y configuración completa'
+      'Listas de precios y configuración completa',
+      'Asistente de IA'
     ],
     cta: siteConfig.trialCta
   },
@@ -59,11 +60,12 @@ export const subscriptionPlans = [
     featured: false,
     available: false,
     blurb:
-      'Para cadenas y operaciones avanzadas. Todavía no está a la venta; las novedades premium van a llegar primero acá.',
+      'Para cadenas y operaciones avanzadas, con asistente de IA. Todavía no está a la venta; las novedades premium van a llegar primero acá.',
     amount: '$ 34.900',
     period: '/ mes',
     features: [
       'Todo lo de Pro',
+      'Asistente de IA',
       'Prioridad en nuevas funciones',
       'Soporte prioritario',
       'Pensado para operar a escala'
@@ -106,12 +108,12 @@ export const landingFaqs = [
   {
     question: '¿Qué incluye Pro?',
     answer:
-      'Todo lo de Starter, más POS, cocina y pedidos, stock, proveedores y tesorería, delivery y reportes, listas de precios y la configuración completa del local.'
+      'Todo lo de Starter, más POS, cocina y pedidos, stock, proveedores y tesorería, delivery y reportes, listas de precios, la configuración completa del local y el asistente de IA.'
   },
   {
     question: '¿Qué incluye Enterprise?',
     answer:
-      'Enterprise todavía no está a la venta. Cuando se habilite, va a incluir todo lo de Pro, con prioridad en nuevas funciones y soporte. Está pensado para cadenas y operaciones a escala.'
+      'Enterprise todavía no está a la venta. Cuando se habilite, va a incluir todo lo de Pro (asistente de IA incluido), con prioridad en nuevas funciones y soporte. Está pensado para cadenas y operaciones a escala.'
   },
   {
     question: '¿Tengo que instalar un programa?',

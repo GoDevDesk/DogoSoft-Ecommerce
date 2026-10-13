@@ -147,6 +147,7 @@ export class LandingComponent {
     { feature: 'Stock, proveedores y compras', starter: false, pro: true, enterprise: true },
     { feature: 'Delivery y reportes', starter: false, pro: true, enterprise: true },
     { feature: 'Listas de precios y config. completa', starter: false, pro: true, enterprise: true },
+    { feature: 'Asistente de IA', starter: false, pro: true, enterprise: true },
     { feature: 'Prioridad en nuevas funciones', starter: false, pro: false, enterprise: true },
     { feature: 'Soporte prioritario', starter: false, pro: false, enterprise: true }
   ];
