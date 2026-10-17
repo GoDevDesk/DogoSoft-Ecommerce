@@ -120,7 +120,6 @@
       <p class="eyebrow">Comparativa</p>
       <h2>Lo que pagás en otros, acá cuesta menos.</h2>
       <p class="lead">Una carta sola no alcanza para manejar el local. DogoSoft Pro junta las dos cosas.</p>
-      <!-- TODO: completar las celdas "A confirmar" con precios y funciones verificados de Pedix y Fudo antes de difundir. -->
       <div class="cmp">
         <table>
           <thead><tr><th scope="col"><span class="sr">Función</span></th><th scope="col" class="us">DogoSoft Pro</th>
@@ -131,8 +130,8 @@
                 <th scope="row">{{ r.f }}</th>
                 <td class="us y">{{ r.us }}</td>
                 @for (c of [r.pedix, r.fudo]; track $index) {
-                  <td [class.y]="c === 'y'" [class.n]="c === 'n'" [class.q]="c === 'q'">
-                    @switch (c) { @case ('y') { <span aria-label="Sí">✓</span> } @case ('n') { <span aria-label="No">✕</span> } @default { A confirmar } }
+                  <td [class.y]="c === '✓'" [class.n]="c === '✕'">
+                    @switch (c) { @case ('✓') { <span aria-label="Sí">✓</span> } @case ('✕') { <span aria-label="No">✕</span> } @default { {{ c }} } }
                   </td>
                 }
               </tr>
@@ -140,7 +139,7 @@
           </tbody>
         </table>
       </div>
-      <p class="fine">Datos de otras marcas según información pública; pueden cambiar.</p>
+      <p class="fine">* Fudo: plan Avanzado (con stock y reportes) $ 43.900/mes; las listas de precios están en su plan Pro, $ 69.500/mes. Precios públicos de fu.do consultados el 17/10/2026; pueden cambiar.</p>
     </div>
   </section>
 

@@ -56,15 +56,17 @@ export class LandingComponent {
   ];
   activeTab = this.tabs[0];
 
-  readonly comparison: { f: string; us: string; pedix: 'y' | 'n' | 'q'; fudo: 'y' | 'n' | 'q' }[] = [
-    { f: 'Carta online', us: '✓', pedix: 'y', fudo: 'q' },
-    { f: 'Punto de venta', us: '✓', pedix: 'n', fudo: 'y' },
-    { f: 'Cocina', us: '✓', pedix: 'n', fudo: 'y' },
-    { f: 'Stock', us: '✓', pedix: 'n', fudo: 'y' },
-    { f: 'Caja', us: '✓', pedix: 'n', fudo: 'y' },
-    { f: 'Delivery y repartidores', us: '✓', pedix: 'q', fudo: 'q' },
-    { f: 'Sin comisión por pedido', us: '✓', pedix: 'q', fudo: 'q' },
-    { f: 'Precio por mes', us: siteConfig.prices.proLabel, pedix: 'q', fudo: 'q' }
+  // Fuentes: Pedix, datos de Lucas (17/10/2026). Fudo: https://fu.do/es-ar/precios/ (consultado 17/10/2026):
+  // Plan Inicial $ 22.500, Avanzado $ 43.900 (stock y reportes), Pro $ 69.500 (listas de precios). Revisar periódicamente.
+  readonly comparison: { f: string; us: string; pedix: string; fudo: string }[] = [
+    { f: 'Carta online', us: '✓', pedix: '✓', fudo: '✓' },
+    { f: 'Punto de venta', us: '✓', pedix: '✕', fudo: '✓' },
+    { f: 'Cocina', us: '✓', pedix: '✕', fudo: '✓' },
+    { f: 'Stock', us: '✓', pedix: '✕', fudo: '✓' },
+    { f: 'Caja', us: '✓', pedix: '✕', fudo: '✓' },
+    { f: 'Delivery y repartidores', us: '✓', pedix: '✕', fudo: '✓' },
+    { f: 'Sin comisión por pedido', us: '✓', pedix: '✓', fudo: '✓' },
+    { f: 'Precio por mes', us: siteConfig.prices.proLabel, pedix: '$\u00a019.900', fudo: 'Desde $\u00a043.900*' }
   ];
 
   toggleTheme(): void {
