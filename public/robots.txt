@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO dominio pendiente: reemplazar por la URL pública definitiva.
+# Sitemap: https://DOMINIO-PENDIENTE/sitemap.xml

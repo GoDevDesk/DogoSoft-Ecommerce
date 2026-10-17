@@ -1,0 +1,253 @@
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="hdr">
+  <div class="w">
+    <a class="logo" href="#top" aria-label="DogoSoft FastFood, inicio">
+      <img src="assets/logo-88.png" alt="" width="40" height="40">DogoSoft <span>FastFood</span>
+    </a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#funciones">Funciones</a><a href="#carta">Carta online</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a>
+    </nav>
+    <button type="button" class="tgl" (click)="toggleTheme()"
+      [attr.aria-label]="theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">{{ theme === 'dark' ? '☀' : '☾' }}</button>
+    <a class="btn p hbtn" [href]="site.signupUrl">Probar gratis</a>
+    <button type="button" class="hb" aria-label="Menú" [attr.aria-expanded]="menuOpen" aria-controls="menu-movil"
+      (click)="menuOpen = !menuOpen">{{ menuOpen ? '✕' : '☰' }}</button>
+  </div>
+  @if (menuOpen) {
+    <nav id="menu-movil" class="mmenu" aria-label="Menú">
+      <a href="#funciones" (click)="closeMenu()">Funciones</a>
+      <a href="#carta" (click)="closeMenu()">Carta online</a>
+      <a href="#precios" (click)="closeMenu()">Precios</a>
+      <a href="#preguntas" (click)="closeMenu()">Preguntas</a>
+      <a [href]="site.loginUrl">Ingresar</a>
+      <button type="button" class="mtgl" (click)="toggleTheme()">
+        {{ theme === 'dark' ? '☀ Modo claro' : '☾ Modo oscuro' }}
+      </button>
+    </nav>
+  }
+</header>
+
+<main id="contenido">
+  <div class="hero" id="top">
+    <div class="w">
+      <div>
+        <p class="eyebrow">Para hamburgueserías, pizzerías, rotiserías y kioscos</p>
+        <h1>Tu local completo: mostrador, cocina, delivery y carta online. <em>Desde {{ site.prices.starterLabel }}/mes.</em></h1>
+        <p class="sub">Sin comisión por pedido. {{ site.trialLabel }} gratis en Pro. Sin instalar nada.</p>
+        <div class="ctas">
+          <a class="btn p" [href]="site.signupUrl">Crear mi local gratis</a>
+          @if (site.demoCartaUrl) {
+            <a class="btn g" [href]="site.demoCartaUrl" target="_blank" rel="noopener">Ver una carta de ejemplo ↗</a>
+          } @else {
+            <a class="btn g" href="#carta">Ver la carta online</a>
+          }
+        </div>
+      </div>
+      <div class="dev" aria-hidden="true">
+        <div class="lap"><div class="scr"><img src="assets/media/app-pos.png" alt="" width="1024" height="482"></div></div>
+        <div class="phone"><img src="assets/media/carta/carta.webp" alt="" width="440" height="952"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="w"><span>Pagos con Mercado Pago</span><span>Sin comisión por pedido</span><span>Soporte por WhatsApp</span><span>Hecho en Argentina</span></div>
+  </div>
+
+  <section id="recorrido">
+    <div class="w">
+      <p class="eyebrow">Cómo funciona</p>
+      <h2>El recorrido de un pedido</h2>
+      <p class="lead">De la carta del cliente a su puerta, todo en el mismo sistema.</p>
+      <ol class="steps">
+        @for (s of steps; track s.title; let i = $index) {
+          <li class="step"><span class="n">{{ i + 1 }}</span><div><b>{{ s.title }}</b><span>{{ s.text }}</span></div></li>
+        }
+      </ol>
+      <div class="stepshots">
+        <div class="mini"><img src="assets/media/carta/pago.webp" alt="Pago con transferencia en la carta online" width="440" height="952" loading="lazy"></div>
+        <div class="mini"><img src="assets/media/carta/seguimiento.webp" alt="Seguimiento del pedido en vivo" width="440" height="952" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="carta">
+    <div class="w two">
+      <div>
+        <p class="eyebrow">Carta online</p>
+        <h2>Tu carta, tus clientes, sin comisión.</h2>
+        <p class="lead">Compartí un link o un QR y recibí pedidos directo, sin pagarle un porcentaje a nadie.</p>
+        <ul class="ticks">
+          <li>QR y link para compartir</li><li>Tus colores, tu logo y tu portada</li><li>Combos personalizables y extras</li>
+          <li>Pago con Mercado Pago o transferencia</li><li>Seguimiento del pedido para tu cliente</li>
+        </ul>
+        @if (site.demoCartaUrl) {
+          <a class="btn p" [href]="site.demoCartaUrl" target="_blank" rel="noopener">Ver carta demo ↗</a>
+        } @else {
+          <a class="btn p" [href]="site.signupUrl">Crear mi carta gratis</a>
+        }
+      </div>
+      <div class="duo">
+        <div class="mini"><img src="assets/media/carta/categoria.webp" alt="Categoría de la carta online" width="440" height="952" loading="lazy"></div>
+        <div class="mini low"><img src="assets/media/carta/combo.webp" alt="Personalizar un combo" width="440" height="952" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funciones">
+    <div class="w">
+      <p class="eyebrow">Funciones del local</p>
+      <h2>Todo lo que pasa en tu local, en un lugar</h2>
+      <div class="tabs" role="tablist" aria-label="Funciones">
+        @for (t of tabs; track t.id; let i = $index) {
+          <button type="button" class="tab" role="tab" [id]="'tab-' + t.id" [class.on]="t === activeTab"
+            [attr.aria-selected]="t === activeTab" [attr.tabindex]="t === activeTab ? 0 : -1" aria-controls="tab-panel"
+            (click)="selectTab(i)" (keydown)="onTabKey($event, i)">{{ t.title }}</button>
+        }
+      </div>
+      <div class="feat" id="tab-panel" role="tabpanel" [attr.aria-labelledby]="'tab-' + activeTab.id">
+        <div>
+          <h3>{{ activeTab.title }}</h3>
+          <ul class="ticks">@for (p of activeTab.points; track p) { <li>{{ p }}</li> }</ul>
+        </div>
+        <div class="shot"><img [src]="activeTab.shot" [alt]="activeTab.alt" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="comparativa">
+    <div class="w">
+      <p class="eyebrow">Comparativa</p>
+      <h2>Lo que pagás en otros, acá cuesta menos.</h2>
+      <p class="lead">Una carta sola no alcanza para manejar el local. DogoSoft Pro junta las dos cosas.</p>
+      <!-- TODO: completar las celdas "A confirmar" con precios y funciones verificados de Pedix y Fudo antes de difundir. -->
+      <div class="cmp">
+        <table>
+          <thead><tr><th scope="col"><span class="sr">Función</span></th><th scope="col" class="us">DogoSoft Pro</th>
+            <th scope="col">Pedix<br><span class="q">carta online</span></th><th scope="col">Fudo<br><span class="q">sistema de gestión</span></th></tr></thead>
+          <tbody>
+            @for (r of comparison; track r.f) {
+              <tr>
+                <th scope="row">{{ r.f }}</th>
+                <td class="us y">{{ r.us }}</td>
+                @for (c of [r.pedix, r.fudo]; track $index) {
+                  <td [class.y]="c === 'y'" [class.n]="c === 'n'" [class.q]="c === 'q'">
+                    @switch (c) { @case ('y') { <span aria-label="Sí">✓</span> } @case ('n') { <span aria-label="No">✕</span> } @default { A confirmar } }
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Datos de otras marcas según información pública; pueden cambiar.</p>
+    </div>
+  </section>
+
+  <section id="tipos">
+    <div class="w">
+      <p class="eyebrow">Tipos de local</p>
+      <h2>Hecho para tu tipo de local</h2>
+      <p class="lead">Elegís el tipo al crear tu local y el sistema se adapta.</p>
+      <div class="types">
+        <div class="type"><span class="ic" aria-hidden="true">🍔</span><span class="badge">Disponible</span><b>Comida rápida y gastronomía</b><span>Hamburgueserías, pizzerías y rotiserías con salón, mostrador y delivery.</span></div>
+        <div class="type"><span class="ic" aria-hidden="true">🏪</span><span class="badge">Disponible</span><b>Kiosco</b><span>Códigos de barra, stock, fiado y precios por lista.</span></div>
+        <div class="type soon"><span class="ic" aria-hidden="true">＋</span><span class="badge s">Pronto</span><b>Más tipos de local</b><span>Vamos a sumar nuevos rubros.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="precios">
+    <div class="w">
+      <p class="eyebrow">Precios</p>
+      <h2>Precios simples, sin comisión por pedido</h2>
+      <div class="plans">
+        @for (p of plans; track p.id) {
+          <article class="plan" [class.hl]="p.highlighted" [class.off]="!p.available" [attr.aria-disabled]="!p.available || null">
+            @if (p.tag) { <span class="tag">{{ p.tag }}</span> }
+            @if (!p.available) { <span class="badge s">No disponible · Próximamente</span> }
+            <h3>{{ p.name }}</h3>
+            @if (p.price) {
+              <div class="price">{{ p.price }}<small> /mes</small></div>
+            } @else {
+              <div class="price soon">Próximamente</div>
+            }
+            <p class="muted">{{ p.blurb }}</p>
+            @if (p.features.length) { <ul>@for (f of p.features; track f) { <li>{{ f }}</li> }</ul> }
+            @if (p.available) {
+              <a class="btn" [class.p]="p.highlighted" [href]="site.signupUrl">{{ p.cta }}</a>
+            } @else {
+              <a class="btn" [href]="site.whatsappUrl" target="_blank" rel="noopener">{{ p.cta }}</a>
+            }
+          </article>
+        }
+      </div>
+      <p class="fine">Precios finales por mes, en pesos argentinos. Se pagan con Mercado Pago.</p>
+    </div>
+  </section>
+
+  <!-- PROVISORIO: testimonio redactado por nosotros, pendiente de aprobación del dueño de Smash Delirio Burger
+       (falta foto y nombre). No difundir hasta tener su OK. -->
+  <section>
+    <div class="w narrow">
+      <p class="eyebrow">Lo usan</p>
+      <h2>Un local que ya lo usa</h2>
+      <figure class="quote">
+        <blockquote>«Antes anotábamos los pedidos en papel y se nos mezclaban. Ahora entran por la carta, cocina los ve al toque y cerramos la caja sin hacer cuentas a mano.»</blockquote>
+        <figcaption class="who"><i aria-hidden="true">SD</i><div><b>Smash Delirio Burger</b><div class="muted">Hamburguesería</div></div></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="alt" id="preguntas">
+    <div class="w">
+      <p class="eyebrow">Preguntas</p>
+      <h2>Preguntas frecuentes</h2>
+      <div class="faq">
+        @for (f of faqs; track f.q; let i = $index) {
+          <div class="qa">
+            <button type="button" class="q2" [attr.aria-expanded]="openFaq.has(i)" [attr.aria-controls]="'faq-' + i" (click)="toggleFaq(i)">
+              {{ f.q }}<span aria-hidden="true">{{ openFaq.has(i) ? '−' : '+' }}</span>
+            </button>
+            @if (openFaq.has(i)) { <div class="a" [id]="'faq-' + i">{{ f.a }}</div> }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="w">
+      <h2>Abrí tu local en 5 minutos.</h2>
+      <p>Creá tu cuenta, cargá tus productos y compartí tu carta hoy.</p>
+      <div class="ctas">
+        <a class="btn p" [href]="site.signupUrl">Crear mi local gratis</a>
+        <a class="btn g" [href]="site.whatsappUrl" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="w">
+    <div>
+      <a class="logo" href="#top"><img src="assets/logo-88.png" alt="" width="40" height="40">DogoSoft <span>FastFood</span></a>
+      <p>Sistema para locales gastronómicos y kioscos. Hecho en Argentina.</p>
+      <p>© {{ year }} DogoSoft</p>
+    </div>
+    <div><b>Producto</b><a href="#funciones">Funciones</a><a href="#carta">Carta online</a><a href="#precios">Precios</a></div>
+    <div>
+      <b>Contacto</b>
+      <a [href]="site.whatsappUrl" target="_blank" rel="noopener">💬 WhatsApp {{ site.whatsappLabel }}</a>
+      <a [href]="'mailto:' + site.email">{{ site.email }}</a>
+      @if (site.instagramUrl) { <a [href]="site.instagramUrl" target="_blank" rel="noopener">Instagram</a> }
+    </div>
+    <!-- TODO: página de Términos y privacidad pendiente. -->
+    <div><b>Cuenta</b><a [href]="site.loginUrl">Ingresar</a><a [href]="site.signupUrl">Crear mi local</a></div>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="btn p" [href]="site.signupUrl">Crear mi local gratis</a>
+  <a class="btn wa" [href]="site.whatsappUrl" target="_blank" rel="noopener" aria-label="Hablar por WhatsApp">💬</a>
+</div>

@@ -1,138 +1,91 @@
+/**
+ * Configuración y textos de la landing de DogoSoft FastFood.
+ * Precios: fuente única para tarjetas, comparativa y textos. Si cambian,
+ * actualizar también el JSON-LD de src/index.html.
+ */
 export const siteConfig = {
   name: 'DogoSoft FastFood',
-  product: 'FastFood',
   brand: 'DogoSoft',
+  product: 'FastFood',
   email: 'contacto@dogosoft.com',
-  /** URL para crear el local / iniciar la prueba. */
+  /** URL para crear el local / iniciar la prueba (app actual). */
   signupUrl: 'https://dogo-sogft-app-web.vercel.app/registro',
-  trialDays: 30,
+  loginUrl: 'https://dogo-sogft-app-web.vercel.app/login',
+  /** TODO: reemplazar por una carta pública de ejemplo cuando exista. */
+  demoCartaUrl: '',
+  whatsappUrl:
+    'https://wa.me/5491121566878?text=' +
+    encodeURIComponent('Hola, quiero saber más de DogoSoft FastFood'),
+  whatsappLabel: '11 2156-6878',
+  /** TODO: usuario de Instagram pendiente. */
+  instagramUrl: '',
   trialLabel: '1 mes',
-  trialCta: 'Probar 1 mes gratis',
-  graceDays: 3,
   prices: {
-    starterLabel: '$ 6.900 / mes',
-    proLabel: '$ 14.900 / mes',
-    enterpriseLabel: '$ 34.900 / mes'
+    starter: 9900,
+    starterLabel: '$ 9.900',
+    pro: 19900,
+    proLabel: '$ 19.900'
   }
 } as const;
 
-export const subscriptionPlans = [
+export interface Plan {
+  id: 'starter' | 'pro' | 'enterprise';
+  name: string;
+  tag?: string;
+  price: string | null;
+  blurb: string;
+  features: string[];
+  cta: string;
+  highlighted: boolean;
+  available: boolean;
+}
+
+export const subscriptionPlans: Plan[] = [
   {
     id: 'starter',
     name: 'Starter',
-    badge: 'Para empezar',
-    featured: false,
-    blurb:
-      'Ideal para empezar: carta pública, productos y combos. El cliente arma el pedido y continúa por WhatsApp.',
-    amount: '$ 9.900',
-    period: '/ mes',
-    features: [
-      'Carta online con link y QR',
-      'Cierre del pedido por WhatsApp',
-      'Productos y combos'
-    ],
-    available: true,
-    cta: siteConfig.trialCta
+    price: siteConfig.prices.starterLabel,
+    blurb: 'Solo carta online, pedidos por WhatsApp.',
+    features: ['Carta con QR y link', 'Tus colores y tu logo', 'Sin comisión por pedido'],
+    cta: 'Empezar con Starter',
+    highlighted: false,
+    available: true
   },
   {
     id: 'pro',
     name: 'Pro',
-    badge: 'Más elegido',
-    featured: true,
-    blurb: 'Todas las funciones del sistema para operar el local completo, con asistente de IA.',
-    amount: '$ 19.900',
-    period: '/ mes',
-    available: true,
+    tag: '1 mes gratis',
+    price: siteConfig.prices.proLabel,
+    blurb: 'Todo el sistema.',
     features: [
-      'Todo lo de Starter',
-      'POS, cocina y pedidos',
-      'Stock, proveedores y tesorería',
-      'Delivery y reportes',
-      'Listas de precios y configuración completa',
-      'Asistente de IA'
+      'Carta online con pago y seguimiento',
+      'Punto de venta, cocina y delivery',
+      'Stock, caja y reportes',
+      'Sin comisión por pedido'
     ],
-    cta: siteConfig.trialCta
+    cta: 'Probar 1 mes gratis',
+    highlighted: true,
+    available: true
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    badge: 'Próximamente',
-    featured: false,
-    available: false,
-    blurb:
-      'Para cadenas y operaciones avanzadas, con asistente de IA. Todavía no está a la venta; las novedades premium van a llegar primero acá.',
-    amount: '$ 34.900',
-    period: '/ mes',
-    features: [
-      'Todo lo de Pro',
-      'Asistente de IA',
-      'Prioridad en nuevas funciones',
-      'Soporte prioritario',
-      'Pensado para operar a escala'
-    ],
-    cta: 'Próximamente'
+    price: null,
+    blurb: 'Para varias sucursales.',
+    features: [],
+    cta: 'Escribinos por WhatsApp',
+    highlighted: false,
+    available: false
   }
-] as const;
+];
 
 export const landingFaqs = [
-  {
-    question: '¿Hay prueba gratis?',
-    answer:
-      'Sí. Al crear tu local tenés 1 mes de prueba gratis, sin compromiso. Podés cargar productos, armar la carta y probar el sistema antes de elegir plan.'
-  },
-  {
-    question: '¿Cómo se paga la suscripción?',
-    answer:
-      'El cobro es mensual con Mercado Pago. Activás el plan desde la configuración del local cuando quieras seguir después de la prueba.'
-  },
-  {
-    question: '¿Cobran comisión por cada pedido o venta?',
-    answer:
-      'No. El precio es la suscripción mensual del plan. No nos quedamos con un porcentaje de tus ventas. La carta online está incluida en Starter y Pro.'
-  },
-  {
-    question: '¿Qué pasa si falla un pago?',
-    answer:
-      'Si tenés una suscripción activa y el pago falla, hay 3 días de gracia antes de bloquear el acceso. Así no te quedás afuera en medio de un servicio.'
-  },
-  {
-    question: '¿Puedo cambiar de plan después?',
-    answer:
-      'Sí. Desde la configuración del local gestionás la suscripción y podés pasar de Starter a Pro (o al revés) cuando el negocio lo pida. Enterprise todavía no está disponible.'
-  },
-  {
-    question: '¿Qué incluye Starter?',
-    answer:
-      'Carta online con link y QR, productos y combos. El cliente arma el pedido y continúa por WhatsApp. No incluye POS, cocina, stock, tesorería, delivery ni reportes.'
-  },
-  {
-    question: '¿Qué incluye Pro?',
-    answer:
-      'Todo lo de Starter, más POS, cocina y pedidos, stock, proveedores y tesorería, delivery y reportes, listas de precios, la configuración completa del local y el asistente de IA.'
-  },
-  {
-    question: '¿Qué incluye Enterprise?',
-    answer:
-      'Enterprise todavía no está a la venta. Cuando se habilite, va a incluir todo lo de Pro (asistente de IA incluido), con prioridad en nuevas funciones y soporte. Está pensado para cadenas y operaciones a escala.'
-  },
-  {
-    question: '¿Tengo que instalar un programa?',
-    answer:
-      'No. Es un sistema web: lo usás desde el navegador, en el local. Cada negocio es un local independiente (SaaS multi-local).'
-  },
-  {
-    question: '¿La carta online se paga aparte?',
-    answer:
-      'No. Está incluida en Starter y Pro. En Starter el pedido cierra por WhatsApp. En Pro entra al mismo flujo de cocina y gestión.'
-  },
-  {
-    question: '¿Se integra con PedidosYa o Rappi?',
-    answer:
-      'Hoy no. DogoSoft FastFood cubre tu operación propia: mostrador, carta web y delivery del local. No prometemos integraciones con marketplaces que todavía no existen en el producto.'
-  },
-  {
-    question: '¿Incluye facturación fiscal AFIP?',
-    answer:
-      'No está incluida. El sistema registra ventas, caja y tesorería para operar el local; la facturación fiscal integrada no forma parte de la oferta actual.'
-  }
+  { q: '¿Tengo que instalar algo?', a: 'No. Entrás desde el navegador en la compu, la tablet o el celular.' },
+  { q: '¿Cómo funciona el mes gratis?', a: 'Al crear tu local probás el plan Pro completo durante 1 mes.' },
+  { q: '¿Me cobran comisión por cada pedido?', a: 'No. Pagás el plan por mes y los pedidos de tu carta son todos tuyos.' },
+  { q: '¿Cómo me pagan los clientes de la carta?', a: 'Con Mercado Pago o por transferencia, desde la misma carta.' },
+  { q: '¿Sirve para un kiosco?', a: 'Sí. Tiene códigos de barra, stock, fiado y precios por lista.' },
+  { q: '¿Se conecta con Rappi o PedidosYa?', a: 'Todavía no. Hoy tus clientes piden directo en tu carta, sin comisión.' },
+  { q: '¿Hace factura electrónica (AFIP)?', a: 'Todavía no está incluida. Está entre lo próximo que viene.' },
+  { q: '¿Tengo varias sucursales, me sirve?', a: 'El plan para varias sucursales viene pronto. Escribinos por WhatsApp y te contamos.' }
 ];
