@@ -34,6 +34,7 @@
         <p class="eyebrow">Para hamburgueserías, pizzerías, rotiserías y kioscos</p>
         <h1>Tu local completo: mostrador, cocina, delivery y carta online. <em>Desde {{ site.prices.starterLabel }}/mes.</em></h1>
         <p class="sub">Sin comisión por pedido. {{ site.trialLabel }} gratis en Pro. Sin instalar nada.</p>
+        <a class="fchip" href="#precios"><b>{{ site.founders.badge }}</b><span>{{ site.founders.short }}</span></a>
         <div class="ctas">
           <a class="btn p" [href]="site.signupUrl">Crear mi local gratis</a>
           @if (site.demoCartaUrl) {
@@ -140,6 +141,7 @@
         </table>
       </div>
       <p class="fine">* Fudo: plan Avanzado (con stock y reportes) $ 43.900/mes; las listas de precios están en su plan Pro, $ 69.500/mes. Precios públicos de fu.do consultados el 17/10/2026; pueden cambiar.</p>
+      <p class="fine">DogoSoft Pro {{ site.prices.proLabel }}/mes: {{ site.founders.note }}</p>
     </div>
   </section>
 
@@ -160,14 +162,20 @@
     <div class="w">
       <p class="eyebrow">Precios</p>
       <h2>Precios simples, sin comisión por pedido</h2>
+      <div class="founders" role="note">
+        <span class="fbadge">{{ site.founders.badge }}</span>
+        <p>{{ site.founders.note }}</p>
+      </div>
       <div class="plans">
         @for (p of plans; track p.id) {
           <article class="plan" [class.hl]="p.highlighted" [class.off]="!p.available" [attr.aria-disabled]="!p.available || null">
             @if (p.tag) { <span class="tag">{{ p.tag }}</span> }
             @if (!p.available) { <span class="badge s">No disponible · Próximamente</span> }
+            @if (p.founders) { <span class="fbadge">{{ site.founders.badge }}</span> }
             <h3>{{ p.name }}</h3>
             @if (p.price) {
               <div class="price">{{ p.price }}<small> /mes</small></div>
+              @if (p.afterPrice) { <p class="after">Congelado 6 meses. Después, {{ p.afterPrice }}/mes.</p> }
             } @else {
               <div class="price soon">Próximamente</div>
             }

@@ -25,6 +25,17 @@ export const siteConfig = {
     starterLabel: '$ 9.900',
     pro: 19900,
     proLabel: '$ 19.900'
+  },
+  /**
+   * Precio founders: solo texto. No cambia lo que se cobra (el monto sale de la base).
+   * Los primeros 10 locales mantienen el precio de lanzamiento por 6 meses.
+   */
+  founders: {
+    badge: 'Founders · precio de lanzamiento',
+    note: 'Precio de lanzamiento para los primeros 10 usuarios founders, congelado por 6 meses. Después: Pro $24.900 y Starter $14.900 por mes.',
+    short: 'Primeros 10 locales, congelado por 6 meses.',
+    starterAfterLabel: '$ 14.900',
+    proAfterLabel: '$ 24.900'
   }
 } as const;
 
@@ -33,6 +44,9 @@ export interface Plan {
   name: string;
   tag?: string;
   price: string | null;
+  /** Precio founders de lanzamiento: muestra el badge y el precio de después. */
+  founders?: boolean;
+  afterPrice?: string;
   blurb: string;
   features: string[];
   cta: string;
@@ -45,6 +59,8 @@ export const subscriptionPlans: Plan[] = [
     id: 'starter',
     name: 'Starter',
     price: siteConfig.prices.starterLabel,
+    founders: true,
+    afterPrice: siteConfig.founders.starterAfterLabel,
     blurb: 'Solo carta online, pedidos por WhatsApp.',
     features: ['Carta con QR y link', 'Tus colores y tu logo', 'Sin comisión por pedido'],
     cta: 'Empezar con Starter',
@@ -56,6 +72,8 @@ export const subscriptionPlans: Plan[] = [
     name: 'Pro',
     tag: '1 mes gratis',
     price: siteConfig.prices.proLabel,
+    founders: true,
+    afterPrice: siteConfig.founders.proAfterLabel,
     blurb: 'Todo el sistema.',
     features: [
       'Carta online con pago y seguimiento',
@@ -82,6 +100,7 @@ export const subscriptionPlans: Plan[] = [
 export const landingFaqs = [
   { q: '¿Tengo que instalar algo?', a: 'No. Entrás desde el navegador en la compu, la tablet o el celular.' },
   { q: '¿Cómo funciona el mes gratis?', a: 'Al crear tu local probás el plan Pro completo durante 1 mes.' },
+  { q: '¿Qué es el precio founders?', a: siteConfig.founders.note },
   { q: '¿Me cobran comisión por cada pedido?', a: 'No. Pagás el plan por mes y los pedidos de tu carta son todos tuyos.' },
   { q: '¿Cómo me pagan los clientes de la carta?', a: 'Con Mercado Pago o por transferencia, desde la misma carta.' },
   { q: '¿Sirve para un kiosco?', a: 'Sí. Tiene códigos de barra, stock, fiado y precios por lista.' },
