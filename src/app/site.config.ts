@@ -17,6 +17,10 @@ export const siteConfig = {
     'https://wa.me/5491121566878?text=' +
     encodeURIComponent('Hola, quiero saber más de DogoSoft FastFood'),
   whatsappLabel: '11 2156-6878',
+  /** WhatsApp de ventas con el mensaje del plan Enterprise (no tiene alta online). */
+  enterpriseWhatsappUrl:
+    'https://wa.me/5491121566878?text=' +
+    encodeURIComponent('Hola, quiero el plan Enterprise multisucursal'),
   /** TODO: usuario de Instagram pendiente. */
   instagramUrl: '',
   trialLabel: '1 mes',
@@ -36,6 +40,18 @@ export const siteConfig = {
     short: 'Primeros 10 locales, congelado por 6 meses.',
     starterAfterLabel: '$ 14.900',
     proAfterLabel: '$ 24.900'
+  },
+  /**
+   * Enterprise (multisucursal / franquicias): solo texto, se contrata por WhatsApp.
+   * Total = consolidado + licencia de cada local. Ej. 3 locales: 24.900 + 3 x 19.900 = 84.600;
+   * después: 24.900 + 3 x 22.000 = 90.900.
+   */
+  enterprise: {
+    consolidatedLabel: '$ 24.900',
+    perLocationFoundersLabel: '$ 19.900',
+    perLocationLabel: '$ 22.000',
+    exampleFoundersLabel: '$\u00a084.600',
+    exampleAfterLabel: '$\u00a090.900'
   }
 } as const;
 
@@ -47,6 +63,13 @@ export interface Plan {
   /** Precio founders de lanzamiento: muestra el badge y el precio de después. */
   founders?: boolean;
   afterPrice?: string;
+  /** Texto bajo el precio (Enterprise: qué incluye ese monto). */
+  priceNote?: string;
+  /** Precio por local (Enterprise). */
+  perLocation?: { label: string; price: string; note: string }[];
+  example?: string;
+  /** Plan sin alta online: el botón abre este link de contacto. */
+  contactUrl?: string;
   blurb: string;
   features: string[];
   cta: string;
@@ -88,12 +111,20 @@ export const subscriptionPlans: Plan[] = [
   {
     id: 'enterprise',
     name: 'Enterprise',
-    price: null,
-    blurb: 'Para varias sucursales.',
-    features: [],
-    cta: 'Escribinos por WhatsApp',
+    tag: '1 mes gratis',
+    price: siteConfig.enterprise.consolidatedLabel,
+    priceNote: 'Sistema consolidado, más la licencia de cada local:',
+    perLocation: [
+      { label: 'Primeros 10 founders', price: siteConfig.enterprise.perLocationFoundersLabel, note: 'por local, congelado 6 meses desde el primer pago' },
+      { label: 'Después de los founders', price: siteConfig.enterprise.perLocationLabel, note: 'por local (la licencia individual es $\u00a024.900)' }
+    ],
+    example: `Ejemplo con 3 locales: ${siteConfig.enterprise.exampleFoundersLabel}/mes founders y ${siteConfig.enterprise.exampleAfterLabel}/mes después.`,
+    blurb: 'Para cadenas y franquicias: cada local con su licencia y un sistema consolidado que ve los datos de todas las sucursales juntas.',
+    features: ['Todo lo de Pro en cada local', 'Datos de todas las sucursales juntos', 'Sin comisión por pedido'],
+    cta: 'Consultar por WhatsApp',
+    contactUrl: siteConfig.enterpriseWhatsappUrl,
     highlighted: false,
-    available: false
+    available: true
   }
 ];
 
@@ -106,5 +137,8 @@ export const landingFaqs = [
   { q: '¿Sirve para un kiosco?', a: 'Sí. Tiene códigos de barra, stock, fiado y precios por lista.' },
   { q: '¿Se conecta con Rappi o PedidosYa?', a: 'Todavía no. Hoy tus clientes piden directo en tu carta, sin comisión.' },
   { q: '¿Hace factura electrónica (AFIP)?', a: 'Todavía no está incluida. Está entre lo próximo que viene.' },
-  { q: '¿Tengo varias sucursales, me sirve?', a: 'El plan para varias sucursales viene pronto. Escribinos por WhatsApp y te contamos.' }
+  {
+    q: '¿Tengo varias sucursales, me sirve?',
+    a: 'Sí, con el plan Enterprise. Cada local paga su licencia y se suma un sistema consolidado de $ 24.900 por mes que ve los datos de todas las sucursales juntas. Por local: $ 19.900 para los primeros 10 founders (congelado 6 meses desde el primer pago) y después $ 22.000. También tiene 1 mes gratis. Escribinos por WhatsApp y lo armamos.'
+  }
 ];

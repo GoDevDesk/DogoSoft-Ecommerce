@@ -172,16 +172,29 @@
             @if (p.tag) { <span class="tag">{{ p.tag }}</span> }
             @if (!p.available) { <span class="badge s">No disponible · Próximamente</span> }
             @if (p.founders) { <span class="fbadge">{{ site.founders.badge }}</span> }
+            @if (p.id === 'enterprise') { <span class="badge">Multisucursal y franquicias</span> }
             <h3>{{ p.name }}</h3>
+            @if (p.perLocation?.length) { <p class="muted">{{ p.blurb }}</p> }
             @if (p.price) {
               <div class="price">{{ p.price }}<small> /mes</small></div>
               @if (p.afterPrice) { <p class="after">Congelado 6 meses. Después, {{ p.afterPrice }}/mes.</p> }
+              @if (p.priceNote) { <p class="after">{{ p.priceNote }}</p> }
+              @if (p.perLocation?.length) {
+                <dl class="perloc">
+                  @for (r of p.perLocation; track r.label) {
+                    <div><dt>{{ r.label }}</dt><dd><b>{{ r.price }}</b><small>/mes</small><span>{{ r.note }}</span></dd></div>
+                  }
+                </dl>
+              }
+              @if (p.example) { <p class="ex">{{ p.example }}</p> }
             } @else {
               <div class="price soon">Próximamente</div>
             }
-            <p class="muted">{{ p.blurb }}</p>
+            @if (!p.perLocation?.length) { <p class="muted">{{ p.blurb }}</p> }
             @if (p.features.length) { <ul>@for (f of p.features; track f) { <li>{{ f }}</li> }</ul> }
-            @if (p.available) {
+            @if (p.contactUrl) {
+              <a class="btn" [href]="p.contactUrl" target="_blank" rel="noopener">{{ p.cta }}</a>
+            } @else if (p.available) {
               <a class="btn" [class.p]="p.highlighted" [href]="site.signupUrl">{{ p.cta }}</a>
             } @else {
               <a class="btn" [href]="site.whatsappUrl" target="_blank" rel="noopener">{{ p.cta }}</a>
